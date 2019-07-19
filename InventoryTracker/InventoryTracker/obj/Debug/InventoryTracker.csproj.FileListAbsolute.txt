@@ -1,0 +1,15 @@
+C:\Users\marti\OneDrive\Desktop\test\InventoryTracker\InventoryTracker\InventoryTracker\bin\Debug\InventoryTracker.exe.config
+C:\Users\marti\OneDrive\Desktop\test\InventoryTracker\InventoryTracker\InventoryTracker\bin\Debug\InventoryTracker.exe
+C:\Users\marti\OneDrive\Desktop\test\InventoryTracker\InventoryTracker\InventoryTracker\bin\Debug\InventoryTracker.pdb
+C:\Users\marti\OneDrive\Desktop\test\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\InventoryTracker.csprojAssemblyReference.cache
+C:\Users\marti\OneDrive\Desktop\test\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\MainWindow.g.cs
+C:\Users\marti\OneDrive\Desktop\test\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\App.g.cs
+C:\Users\marti\OneDrive\Desktop\test\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\InventoryTracker_MarkupCompile.cache
+C:\Users\marti\OneDrive\Desktop\test\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\InventoryTracker_MarkupCompile.lref
+C:\Users\marti\OneDrive\Desktop\test\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\MainWindow.baml
+C:\Users\marti\OneDrive\Desktop\test\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\InventoryTracker.g.resources
+C:\Users\marti\OneDrive\Desktop\test\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\InventoryTracker.Properties.Resources.resources
+C:\Users\marti\OneDrive\Desktop\test\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\InventoryTracker.csproj.GenerateResource.cache
+C:\Users\marti\OneDrive\Desktop\test\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\InventoryTracker.csproj.CoreCompileInputs.cache
+C:\Users\marti\OneDrive\Desktop\test\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\InventoryTracker.exe
+C:\Users\marti\OneDrive\Desktop\test\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\InventoryTracker.pdb
