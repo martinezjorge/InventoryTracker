@@ -5,8 +5,54 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InventoryTracker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Inventory Tracker" Height="450" Width="800">
+    <Border Margin="5" Background="LightGray">
+
+        <StackPanel>
+
+            <TextBlock Text="Inventory Tracker" HorizontalAlignment="Center" FontSize="20" />
+
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+
+                    <ColumnDefinition Width="*" />
+
+                    <ColumnDefinition Width="*" />
+
+                </Grid.ColumnDefinitions>
+
+                <Button Content="Add Item" Grid.Column="0" />
+
+                <Button Content="Full Inventory" Grid.Column="1" />
+
+            </Grid>
+
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+
+                    <ColumnDefinition Width="*" />
+
+                    <ColumnDefinition Width="*" />
+
+                    <ColumnDefinition Width="*" />
+
+                    <ColumnDefinition Width="*" />
+
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Product" HorizontalAlignment="Center" Grid.Column="0" />
+                <TextBlock Text="Actual" HorizontalAlignment="Center" Grid.Column="1" />
+                <TextBlock Text="Ideal" HorizontalAlignment="Center" Grid.Column="2" />
+                <TextBlock Text="%" HorizontalAlignment="Center" Grid.Column="3" />
+
+
+            </Grid>
+
+
+
+        </StackPanel>
+
+    </Border>
 </Window>
