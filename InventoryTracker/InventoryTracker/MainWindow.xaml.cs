@@ -1,4 +1,8 @@
-﻿using System;
+﻿/* Team Mithrandir */
+
+// Jorge Martinez
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
