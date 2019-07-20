@@ -28,6 +28,9 @@ namespace InventoryTracker
         public MainWindow()
         {
             InitializeComponent();
+            InventoryList inventoryList = InventoryList.FillInventoryListFromExcel();
+            InventoryListing.ItemsSource = inventoryList;
+
         }
     }
 }

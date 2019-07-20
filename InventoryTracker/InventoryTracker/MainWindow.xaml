@@ -47,9 +47,9 @@
                 <TextBlock Text="Ideal" HorizontalAlignment="Center" Grid.Column="2" />
                 <TextBlock Text="%" HorizontalAlignment="Center" Grid.Column="3" />
 
-
             </Grid>
-
+            <DataGrid HorizontalAlignment="Stretch" Name="InventoryListing" VerticalAlignment="Top" RowHeight="30" ColumnWidth="*" VerticalScrollBarVisibility="Auto" />
+            
 
 
         </StackPanel>
