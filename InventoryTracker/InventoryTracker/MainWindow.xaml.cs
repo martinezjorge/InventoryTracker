@@ -1,6 +1,7 @@
 ﻿/* Team Mithrandir */
 
 // Jorge Martinez
+// Marcial Mendoza
 
 using System;
 using System.Collections.Generic;
