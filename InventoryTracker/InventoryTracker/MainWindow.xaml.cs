@@ -1,6 +1,7 @@
 ﻿/* Team Mithrandir */
 
 // Jorge Martinez
+// Nathan Ray
 
 using System;
 using System.Collections.Generic;
