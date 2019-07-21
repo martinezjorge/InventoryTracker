@@ -63,7 +63,7 @@ namespace InventoryTracker
             Marshal.ReleaseComObject(xlapplication);
 
             //fills in the percentages
-            PercentageFiller(inList);
+            PercentageFillerAll(inList);
 
             return inList;
         }
@@ -86,12 +86,16 @@ namespace InventoryTracker
             inList.Add(new InventoryItem("Keyboard", 3, 4));
         }
 
-        public static void PercentageFiller(InventoryList inList)
+        public static void PercentageFillerAll(InventoryList inList)
         {
             for(int i = 0; i < inList.Count; i++)
             {
-                inList[i].Percentage = 100 * inList[i].CurrentStock / inList[i].IdealStock;
+                PercentageFillerSingle(inList, i);
             }
+        }
+        public static void PercentageFillerSingle(InventoryList inList, int i)
+        {
+            inList[i].Percentage = 100 * inList[i].CurrentStock / inList[i].IdealStock;
         }
         public static void WriteInventoryListToExcel(InventoryList inList)
         {
