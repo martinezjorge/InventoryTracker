@@ -68,7 +68,7 @@ namespace InventoryTracker
             return inList;
         }
 
-        public static void PrintInventoryList(InventoryList inList)
+        public static void PrintInventoryList(InventoryList inList) //debug testing
         {
             Console.WriteLine("Capacity: {0}", inList.Capacity);
             Console.WriteLine("Count: {0}", inList.Count);
@@ -79,7 +79,7 @@ namespace InventoryTracker
             }
         }
 
-        public static void FillAdditionalSampleItems(InventoryList inList)
+        public static void FillAdditionalSampleItems(InventoryList inList) //debug testing
         {
             inList.Add(new InventoryItem("Computer", 3, 5));
             inList.Add(new InventoryItem("Monitor", 2, 3));

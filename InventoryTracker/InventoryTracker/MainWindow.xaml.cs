@@ -35,7 +35,8 @@ namespace InventoryTracker
         }
         private void Edit_Button(object sender, RoutedEventArgs e)
         {
-            ;
+            int index = InventoryListing.SelectedIndex; //this gets the row #. Starts at 0 for top of list
+            
         }
         private void Add_Item_Button(object sender, RoutedEventArgs e)
         {
