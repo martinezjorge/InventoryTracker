@@ -26,7 +26,6 @@ namespace InventoryTracker
 
         private void Delete_button(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void Submit_button(object sender, RoutedEventArgs e)
@@ -40,4 +39,5 @@ namespace InventoryTracker
         }
 
     }
+
 }

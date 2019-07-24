@@ -8,6 +8,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,11 +30,10 @@ namespace InventoryTracker
     public partial class MainWindow : Window
     {
         //the inventorylist exists outside mainwindow so that it can be affected by the buttons
-        InventoryList inventoryList = InventoryList.FillInventoryListFromExcel();
         public MainWindow()
         {
             InitializeComponent();
-            InventoryListing.DataContext = inventoryList;
+            ListViewPeople.ItemsSource = ReadCSV("example");
         }
         private void Edit_Button(object sender, RoutedEventArgs e)
         {
@@ -47,5 +47,29 @@ namespace InventoryTracker
         {
             ;
         }
+
+        public IEnumerable<Person> ReadCSV(string fileName)
+        {
+            // We change file extension here to make sure it's a .csv file.
+            string[] lines = File.ReadAllLines(System.IO.Path.ChangeExtension(fileName, ".csv"));
+
+            // lines.Select allows me to project each line as a Person. 
+            // This will give me an IEnumerable<Person> back.
+            return lines.Select(line =>
+            {
+                string[] data = line.Split(',');
+                // We return a person with the data in order.
+                return new Person(data[0], data[1], data[2], data[3]);
+            });
+        }
+
+        private void Edit_Button_Click(object sender, RoutedEventArgs e)
+        {
+            ;
+        }
     }
+
+
+
+
 }

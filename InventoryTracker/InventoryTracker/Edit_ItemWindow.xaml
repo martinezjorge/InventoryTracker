@@ -15,24 +15,20 @@
 
             <!--ITEM NAME TEXTBLOCK AND BOX-->
             <TextBlock TextWrapping="Wrap" Text="ITEM NAME:" FontSize="23" Margin="30,50,611,20"/>
-            <TextBox Height="22" TextWrapping="Wrap" Text="enter item name" RenderTransformOrigin="0.503,-1.473" Margin="221,-70,0,0" HorizontalAlignment="Left" Width="395" TextChanged="TextBox_TextChanged"/>
+            <TextBox Height="22" TextWrapping="Wrap" Text="enter item name" RenderTransformOrigin="0.503,-1.473" Margin="221,-70,0,0" HorizontalAlignment="Left" Width="395" />
 
             <!--CURRENT STOCK TEXTBLOCK AND BOX-->
             <TextBlock TextWrapping="Wrap" Text="CURRENT STOCK:" FontSize="23" Margin="30,10,566,20"/>
             <TextBox Height="24" TextWrapping="Wrap" Text="enter quantity" RenderTransformOrigin="0.503,-1.473" Margin="221,-70,0,0" HorizontalAlignment="Left" Width="395"/>
 
             <!--IDEAL STOCK TEXTBLOCK AND BOX-->
-            <TextBlock TextWrapping="Wrap" Text="IDEAL STOCK:" FontSize="23" Margin="30,10,611,20"/>
+            <TextBlock TextWrapping=" Wrap" Text="IDEAL STOCK:" FontSize="23" Margin="30,10,611,20"/>
             <TextBox Height="22" TextWrapping="Wrap" Text="enter ideal quantity" RenderTransformOrigin="0.503,-1.473" Margin="221,-70,0,0" HorizontalAlignment="Left" Width="395"/>
 
             <!--BUTTONS: DELETE, SUBMIT, CANCEL-->
-            <Button Content="DELETE ITEM" FontSize="20" Margin="310,0,310,0" Height="30" Click="Delete_button"/>
+            <Button Content="DELETE ITEM" x:Name="DeleteButton" FontSize="20" Margin="310,0,310,0" Height="30" Click="Delete_button"/>
             <Button Content="SUBMIT" FontSize="20" Margin="100,15,520,0" Height="30" Click="Submit_button"/>
             <Button Content="CANCEL" FontSize="20" Margin="520,-30,100,0" Height="30" Click="Cancel_button"/>
-
-
-
-
 
 
         </StackPanel>
