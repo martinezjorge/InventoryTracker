@@ -5,21 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InventoryTracker"
         mc:Ignorable="d"
-        Title="Inventory Tracker" Height="450" Width="800">
+        Title="Inventory Tracker" Height="450" Width="800" Background="CadetBlue">
     <Border Margin="5" Background="LightGray">
 
         <StackPanel>
 
-            <TextBlock Text="Inventory Tracker" HorizontalAlignment="Center" FontSize="20" />
+            <!--Title-->
+            <TextBlock Text="Inventory Tracker" TextAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontWeight="Medium" Margin="0 20 0 20" />
 
+            <!--Top Two Buttons-->
             <Grid>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="4*"/>
                 </Grid.ColumnDefinitions>
-                <Button Content="Add Item" Grid.Column="0" Click="Add_Item_Button" />
-                <Button Content="Full Inventory" Grid.Column="1" Click="Full_Inventory_Button" />
+
+                <Button Content="Add Item" Grid.Column="0" FontSize="20" Margin="50 0 0 0" Background="DarkGray" FontWeight="Light" Click="Add_Item_Button" />
+                <Button Content="Full Inventory" Grid.Column="2" FontSize="20" Margin="50 0 50 0" Background="DarkGray" FontWeight="Light" Click="Full_Inventory_Button" />
 
             </Grid>
 
@@ -41,15 +44,36 @@
             </DataGrid>-->
 
 
+            <!--Table-->
             <DataGrid x:Name="ListViewPeople" Background ="Black"
                     AutoGenerateColumns="False"
-                    ColumnWidth="*">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Product" Width="*" Binding="{Binding Path=V1}"/>
-                    <DataGridTextColumn Header="Actual" Width="*" Binding="{Binding Path=V2}"/>
-                    <DataGridTextColumn Header="Ideal" Width="*" Binding="{Binding Path=V3}"/>
-                    <DataGridTextColumn Header="Percentage" Width="*" Binding="{Binding Path=V4}"/>
+                    ColumnWidth="*" Margin="10 20 10 0">
 
+                <!--Cells Properties-->
+                <DataGrid.Resources>
+
+                    <!--Header-->
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="FontSize" Value="20"/>
+                        <Setter Property="FontWeight" Value="Regular"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    </Style>
+
+                    <!--Cells-->
+                    <Style TargetType="{x:Type DataGridCell}">
+                        <Setter Property="FontSize" Value="15"/>
+                        <Setter Property="FontWeight" Value="Light"/>
+                    </Style>
+                </DataGrid.Resources>
+
+                <!--Header-->
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Product" Width="4*" Binding="{Binding Path=V1}"/>
+                    <DataGridTextColumn Header="Actual" Width="2*" Binding="{Binding Path=V2}"/>
+                    <DataGridTextColumn Header="Ideal" Width="2*" Binding="{Binding Path=V3}"/>
+                    <DataGridTextColumn Header="%" Width="*" Binding="{Binding Path=V4}"/>
+
+                    <!--Edit Button-->
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

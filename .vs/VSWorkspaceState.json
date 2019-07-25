@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\InventoryTracker",
+    "\\InventoryTracker\\InventoryTracker"
   ],
+  "SelectedNode": "\\InventoryTracker\\InventoryTracker\\Edit_ItemWindow.xaml.cs",
   "PreviewInSolutionExplorer": false
 }
