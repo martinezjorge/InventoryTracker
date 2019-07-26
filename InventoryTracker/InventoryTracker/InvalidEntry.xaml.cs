@@ -15,13 +15,19 @@ using System.Windows.Shapes;
 namespace InventoryTracker
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for InvalidEntry.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class InvalidEntry : Window
     {
-        public Window1()
+        public InvalidEntry()
         {
             InitializeComponent();
+        }
+        private void Ok_Button(object sender, RoutedEventArgs e)
+        {
+            Window mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
     }
 }

@@ -30,46 +30,34 @@ namespace InventoryTracker
     public partial class MainWindow : Window
     {
         //the inventorylist exists outside mainwindow so that it can be affected by the buttons
+        InventoryList inventoryList = ((App)Application.Current).GetInventoryList();
         public MainWindow()
         {
             InitializeComponent();
-            ListViewPeople.ItemsSource = ReadCSV("example");
+            InventoryListing.DataContext = inventoryList;
         }
         private void Edit_Button(object sender, RoutedEventArgs e)
         {
-            ;
+            //int index = InventoryListing.SelectedIndex; //this gets the row #. Starts at 0 for top of list
+            Global.SetIndex(InventoryListing.SelectedIndex);
+            Window editItemWindow = new Edit_ItemWindow();
+            editItemWindow.Show();
+            this.Close();
         }
         private void Add_Item_Button(object sender, RoutedEventArgs e)
         {
             ;
+            //test methods for myself - nathan. feel free to delete
+            //InventoryList.FillAdditionalSampleItems(inventoryList);
+            //InventoryList.PercentageFillerAll(inventoryList);
         }
         private void Full_Inventory_Button(object sender, RoutedEventArgs e)
         {
             ;
-        }
-
-        public IEnumerable<Person> ReadCSV(string fileName)
-        {
-            // We change file extension here to make sure it's a .csv file.
-            string[] lines = File.ReadAllLines(System.IO.Path.ChangeExtension(fileName, ".csv"));
-
-            // lines.Select allows me to project each line as a Person. 
-            // This will give me an IEnumerable<Person> back.
-            return lines.Select(line =>
-            {
-                string[] data = line.Split(',');
-                // We return a person with the data in order.
-                return new Person(data[0], data[1], data[2], data[3]);
-            });
-        }
-
-        private void Edit_Button_Click(object sender, RoutedEventArgs e)
-        {
-            ;
+            //test methods for myself - nathan. feel free to delete
+            //Window invalidEntry = new InvalidEntry();
+            //invalidEntry.Show();
+            //this.Close();
         }
     }
-
-
-
-
 }
