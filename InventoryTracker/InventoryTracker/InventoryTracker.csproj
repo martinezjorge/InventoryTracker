@@ -62,6 +62,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="InvalidEntry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -73,6 +77,12 @@
     <Compile Include="Edit_ItemWindow.xaml.cs">
       <DependentUpon>Edit_ItemWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Global.cs" />
+    <Compile Include="InvalidEntry.xaml.cs">
+      <DependentUpon>InvalidEntry.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryItem.cs" />
+    <Compile Include="InventoryList.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -83,7 +93,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Person.cs" />
+    <Compile Include="NavigationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
