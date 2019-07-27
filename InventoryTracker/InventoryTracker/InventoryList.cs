@@ -118,6 +118,22 @@ namespace InventoryTracker
         {
             inList[i].Percentage = 100 * inList[i].CurrentStock / inList[i].IdealStock;
         }
+
+        public static void WriteFullInventoryListToCSV(InventoryList inList)
+        {
+            System.IO.DirectoryInfo myDirectory = new DirectoryInfo(Environment.CurrentDirectory);
+            string gparent = myDirectory.Parent.Parent.FullName;
+            gparent += "\\InventoryDatabase.csv";
+            var writer = new StreamWriter(@gparent);
+
+            for (int i = 0; i < inList.Count; i++)
+            {
+                writer.WriteLine(string.Format("{0},{1},{2}", inList[i].ItemName, inList[i].CurrentStock, inList[i].IdealStock));
+                writer.Flush();
+            }
+            writer.Close();
+        }
+
         /*
         public static void WriteInventoryListToExcel(InventoryList inList)
         {
