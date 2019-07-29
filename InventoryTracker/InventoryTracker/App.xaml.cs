@@ -13,5 +13,17 @@ namespace InventoryTracker
     /// </summary>
     public partial class App : Application
     {
+        static InventoryList inventoryList = null;
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            //inventoryList = InventoryList.FillInventoryListFromExcel();
+            inventoryList = InventoryList.FillInventoryListFromCSV();
+        }
+
+        internal InventoryList GetInventoryList()
+        {
+            return inventoryList;
+        }
     }
 }

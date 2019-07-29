@@ -17,7 +17,6 @@ C:\Users\Nathan\Documents\OneDrive\School\COMP380\arcturusthethird\InventoryTrac
 C:\Users\Nathan\Documents\OneDrive\School\COMP380\arcturusthethird\InventoryTracker\InventoryTracker\InventoryTracker\bin\Debug\InventoryTracker.exe
 C:\Users\Nathan\Documents\OneDrive\School\COMP380\arcturusthethird\InventoryTracker\InventoryTracker\InventoryTracker\bin\Debug\InventoryTracker.pdb
 C:\Users\Nathan\Documents\OneDrive\School\COMP380\arcturusthethird\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\InventoryTracker.csprojAssemblyReference.cache
-C:\Users\Nathan\Documents\OneDrive\School\COMP380\arcturusthethird\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\InventoryTracker.csproj.ResolveComReference.cache
 C:\Users\Nathan\Documents\OneDrive\School\COMP380\arcturusthethird\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\MainWindow.g.cs
 C:\Users\Nathan\Documents\OneDrive\School\COMP380\arcturusthethird\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\App.g.cs
 C:\Users\Nathan\Documents\OneDrive\School\COMP380\arcturusthethird\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\InventoryTracker_MarkupCompile.cache
@@ -74,3 +73,9 @@ D:\Git\InventoryFork\InventoryTracker\InventoryTracker\obj\Debug\InventoryTracke
 D:\Git\InventoryFork\InventoryTracker\InventoryTracker\obj\Debug\InventoryTracker.pdb
 D:\Git\InventoryFork\InventoryTracker\InventoryTracker\obj\Debug\Add_ItemWindow.g.cs
 D:\Git\InventoryFork\InventoryTracker\InventoryTracker\obj\Debug\Add_ItemWindow.baml
+C:\Users\Nathan\Documents\OneDrive\School\COMP380\arcturusthethird\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\Edit_ItemWindow.g.cs
+C:\Users\Nathan\Documents\OneDrive\School\COMP380\arcturusthethird\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\Add_ItemWindow.g.cs
+C:\Users\Nathan\Documents\OneDrive\School\COMP380\arcturusthethird\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\Edit_ItemWindow.baml
+C:\Users\Nathan\Documents\OneDrive\School\COMP380\arcturusthethird\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\Add_ItemWindow.baml
+C:\Users\Nathan\Documents\OneDrive\School\COMP380\arcturusthethird\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\InvalidEntry.g.cs
+C:\Users\Nathan\Documents\OneDrive\School\COMP380\arcturusthethird\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\InvalidEntry.baml
