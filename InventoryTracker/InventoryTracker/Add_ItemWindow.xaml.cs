@@ -36,6 +36,7 @@ namespace InventoryTracker
         private void Submit_Add_Button(object sender, RoutedEventArgs e)
         {
             inventoryList.Add(tempInventoryItem);
+            InventoryList.PercentageFillerSingle(inventoryList, inventoryList.Count - 1);
             Window mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
