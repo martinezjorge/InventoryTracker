@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="Add Item" Height="450" Width="800" Background="CadetBlue">
     <Border Margin="5" Background="LightGray">
-        <StackPanel>
+
+        <StackPanel Name="AddItemPanel" DataContext="{Binding}">
 
             <!--Title-->
             <TextBlock Text="Add Item" TextAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontWeight="Medium" Margin="0 20 0 0" />
@@ -22,7 +23,7 @@
 
                 <!--ITEM NAME TEXTBLOCK AND BOX-->
                 <TextBlock Text="Item Name:" TextAlignment="Left" FontSize="30" FontWeight="Normal" Grid.Column="0" Margin="40 30 0 0"/>
-                <TextBox Text="Enter Item Name" HorizontalAlignment="Left" FontWeight="Light" FontSize="20" TextWrapping="Wrap" Grid.Column="1" Width="400" Height="30" Margin="0 20 0 0"/>
+                <TextBox Text="{Binding ItemName}" HorizontalAlignment="Left" FontWeight="Light" FontSize="20" TextWrapping="Wrap" Grid.Column="1" Width="400" Height="30" Margin="0 20 0 0"/>
             </Grid>
 
             <!--Current Stock-->
@@ -35,7 +36,7 @@
 
                 <!--ITEM NAME TEXTBLOCK AND BOX-->
                 <TextBlock Text="Current Stock:" TextAlignment="Left" FontSize="30" FontWeight="Normal" Grid.Column="0" Margin="40 30 0 0"/>
-                <TextBox Text="Enter Item's Current Stock" HorizontalAlignment="Left" FontWeight="Light" FontSize="20" TextWrapping="Wrap" Grid.Column="1" Width="400" Height="30" Margin="0 20 0 0"/>
+                <TextBox Text="{Binding CurrentStock}" HorizontalAlignment="Left" FontWeight="Light" FontSize="20" TextWrapping="Wrap" Grid.Column="1" Width="400" Height="30" Margin="0 20 0 0"/>
             </Grid>
 
             <!--Ideal Stock-->
@@ -48,7 +49,7 @@
 
                 <!--ITEM NAME TEXTBLOCK AND BOX-->
                 <TextBlock Text="Ideal Stock:" TextAlignment="Left" FontSize="30" FontWeight="Normal" Grid.Column="0" Margin="40 30 0 0"/>
-                <TextBox Text="Enter Item's Ideal Stock" HorizontalAlignment="Left" FontWeight="Light" FontSize="20" TextWrapping="Wrap" Grid.Column="1" Width="400" Height="30" Margin="0 20 0 0"/>
+                <TextBox Text="{Binding IdealStock}" HorizontalAlignment="Left" FontWeight="Light" FontSize="20" TextWrapping="Wrap" Grid.Column="1" Width="400" Height="30" Margin="0 20 0 0"/>
             </Grid>
 
             <!--Two Bottom Buttons-->
