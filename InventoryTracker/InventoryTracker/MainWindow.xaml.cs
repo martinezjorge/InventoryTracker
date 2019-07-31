@@ -50,6 +50,11 @@ namespace InventoryTracker
             //test methods for myself - nathan. feel free to delete
             //InventoryList.FillAdditionalSampleItems(inventoryList);
             //InventoryList.PercentageFillerAll(inventoryList);
+            //int index = InventoryListing.SelectedIndex; //this gets the row #. Starts at 0 for top of list
+            Global.SetIndex(InventoryListing.SelectedIndex);
+            Window addItemWindow = new Window2();
+            addItemWindow.Show();
+            this.Close();
         }
         private void Full_Inventory_Button(object sender, RoutedEventArgs e)
         {

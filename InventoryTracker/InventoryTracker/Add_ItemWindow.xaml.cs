@@ -17,21 +17,36 @@ namespace InventoryTracker
     /// <summary>
     /// Interaction logic for Window2.xaml
     /// </summary>
+    
     public partial class Window2 : Window
     {
+
+        InventoryList inventoryList = ((App)Application.Current).GetInventoryList();
+        InventoryItem tempInventoryItem = null;
+        int itemIndex = -1;
+
         public Window2()
         {
             InitializeComponent();
+            itemIndex = Global.GetIndex();
+            tempInventoryItem = new InventoryItem("Insert Item Name", 0, 0);
+            AddItemPanel.DataContext = tempInventoryItem;
         }
 
         private void Submit_Add_Button(object sender, RoutedEventArgs e)
         {
-
+            inventoryList.Add(tempInventoryItem);
+            InventoryList.PercentageFillerSingle(inventoryList, inventoryList.Count - 1);
+            Window mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
 
         private void Submit_Cancel_Button(object sender, RoutedEventArgs e)
         {
-
+            Window mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
     }
 }

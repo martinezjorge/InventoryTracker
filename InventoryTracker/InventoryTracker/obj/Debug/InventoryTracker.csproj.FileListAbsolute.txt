@@ -79,3 +79,5 @@ C:\Users\Nathan\Documents\OneDrive\School\COMP380\arcturusthethird\InventoryTrac
 C:\Users\Nathan\Documents\OneDrive\School\COMP380\arcturusthethird\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\Add_ItemWindow.baml
 C:\Users\Nathan\Documents\OneDrive\School\COMP380\arcturusthethird\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\InvalidEntry.g.cs
 C:\Users\Nathan\Documents\OneDrive\School\COMP380\arcturusthethird\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\InvalidEntry.baml
+D:\Git\InventoryFork\InventoryTracker\InventoryTracker\obj\Debug\InvalidEntry.g.cs
+D:\Git\InventoryFork\InventoryTracker\InventoryTracker\obj\Debug\InvalidEntry.baml
