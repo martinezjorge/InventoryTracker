@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace InventoryTracker
 {
@@ -17,6 +18,45 @@ namespace InventoryTracker
         internal static int GetIndex()
         {
             return index;
+        }
+
+        internal static bool IsValid(InventoryItem item)
+        {
+            // *********data validation*******************//
+            bool valid = true;
+            bool isNumeric;
+
+
+            // item name should be reasonable length
+            if (item.ItemName.Length > 40 || item.ItemName.Length < 1)
+            {
+                valid = false;
+            }
+
+            // not valid if not a number
+            isNumeric = int.TryParse(item.CurrentStock.ToString(), out _);
+            if (!isNumeric)
+            {
+                valid = false;
+            }
+
+            isNumeric = int.TryParse(item.IdealStock.ToString(), out _);
+            if (!isNumeric)
+            {
+                valid = false;
+            }
+            
+
+            // if not valid then InvalidEntry popup window
+            if (!valid)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
         }
     }
 }
