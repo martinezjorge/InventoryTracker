@@ -92,3 +92,4 @@ C:\Users\KrypicSage\cloned-repo\InventoryTracker\InventoryTracker\InventoryTrack
 C:\Users\KrypicSage\cloned-repo\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\InventoryTracker.Properties.Resources.resources
 C:\Users\KrypicSage\cloned-repo\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\InventoryTracker.csproj.GenerateResource.cache
 C:\Users\KrypicSage\cloned-repo\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\InventoryTracker.csproj.CoreCompileInputs.cache
+C:\Users\KrypicSage\cloned-repo\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\InventoryTracker.csprojAssemblyReference.cache

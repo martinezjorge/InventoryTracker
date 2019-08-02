@@ -20,7 +20,7 @@ namespace InventoryTracker
             return index;
         }
 
-        internal static bool IsValid(InventoryItem item)
+        internal static bool IsValid(String Name, String CurrentStock, String IdealStock)
         {
             // *********data validation*******************//
             bool valid = true;
@@ -28,19 +28,19 @@ namespace InventoryTracker
 
 
             // item name should be reasonable length
-            if (item.ItemName.Length > 40 || item.ItemName.Length < 1)
+            if (Name.Length > 40 || Name.Length < 1)
             {
                 valid = false;
             }
 
             // not valid if not a number
-            isNumeric = int.TryParse(item.CurrentStock.ToString(), out _);
+            isNumeric = int.TryParse(CurrentStock, out _);
             if (!isNumeric)
             {
                 valid = false;
             }
 
-            isNumeric = int.TryParse(item.IdealStock.ToString(), out _);
+            isNumeric = int.TryParse(IdealStock, out _);
             if (!isNumeric)
             {
                 valid = false;

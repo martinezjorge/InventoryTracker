@@ -40,10 +40,10 @@ namespace InventoryTracker
 
         private void Submit_button(object sender, RoutedEventArgs e)
         {
-            // data validation on tempInventoryItem
+            // data validation on text boxes
             // true => modify file
             // false => invalidEntry window
-            if(Global.IsValid(tempInventoryItem))
+            if(Global.IsValid(EditItemNameBox.Text, EditItemCurrentStockBox.Text, EditItemIdealStockBox.Text))
             {
                 inventoryList[itemIndex] = tempInventoryItem;
                 InventoryList.PercentageFillerSingle(inventoryList, itemIndex);
