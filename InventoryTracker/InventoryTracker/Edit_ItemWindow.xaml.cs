@@ -40,11 +40,23 @@ namespace InventoryTracker
 
         private void Submit_button(object sender, RoutedEventArgs e)
         {
-            inventoryList[itemIndex] = tempInventoryItem;
-            InventoryList.PercentageFillerSingle(inventoryList, itemIndex);
-            Window mainWindow = new MainWindow();
-            mainWindow.Show();
-            this.Close();
+            // data validation on text boxes
+            // true => modify file
+            // false => invalidEntry window
+            if(Global.IsValid(EditItemNameBox.Text, EditItemCurrentStockBox.Text, EditItemIdealStockBox.Text))
+            {
+                inventoryList[itemIndex] = tempInventoryItem;
+                InventoryList.PercentageFillerSingle(inventoryList, itemIndex);
+                Window mainWindow = new MainWindow();
+                mainWindow.Show();
+                this.Close();
+            }
+            else
+            {
+                Window invalidEntry = new InvalidEntry();
+                invalidEntry.Show();
+            }
+            
         }
 
         private void Cancel_button(object sender, RoutedEventArgs e)

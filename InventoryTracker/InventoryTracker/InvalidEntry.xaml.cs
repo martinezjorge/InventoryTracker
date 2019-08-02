@@ -25,8 +25,6 @@ namespace InventoryTracker
         }
         private void Ok_Button(object sender, RoutedEventArgs e)
         {
-            Window mainWindow = new MainWindow();
-            mainWindow.Show();
             this.Close();
         }
     }
