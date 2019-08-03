@@ -8,7 +8,7 @@ namespace InventoryTracker
 {
     public class Global
     {
-        private static int index = -1; //default value that isn't in range
+        private static int index = -1; // default value that isn't in range
         
         internal static void SetIndex(int value)
         {
