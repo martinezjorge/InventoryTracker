@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
-/*
- * Taken from:
- * https://stackoverflow.com/questions/30860276/return-to-previous-window-on-wpf
- * 
- * */
 
+// Taken from: https://stackoverflow.com/questions/30860276/return-to-previous-window-on-wpf
 
 namespace InventoryTracker
 {
@@ -25,8 +17,10 @@ namespace InventoryTracker
         public static void NavigateTo(Window win)
         {
             if (NavigationStack.Count > 0)
+            {
                 NavigationStack.Peek().Hide();
-
+            }
+               
             NavigationStack.Push(win);
             win.Show();
         }
@@ -34,7 +28,9 @@ namespace InventoryTracker
         public static bool HideAndNavigateBack()
         {
             if (NavigationStack.Count <= 1)
+            {
                 return false;
+            }
 
             NavigationStack.Pop().Hide();
             NavigationStack.Peek().Show();
@@ -44,7 +40,9 @@ namespace InventoryTracker
         public static bool CloseAndNavigateBack()
         {
             if (NavigationStack.Count <= 1)
+            {
                 return false;
+            }
 
             NavigationStack.Pop().Close();
             NavigationStack.Peek().Show();
@@ -56,29 +54,34 @@ namespace InventoryTracker
             return NavigationStack.Count > 1;
         }
 
-        //could be useful for performing FullInventory if you want to utilize the Navigation Service
+        // could be useful for performing FullInventory if you want to utilize the Navigation Service
+
         public static bool PopAndCloseAllHiddenWindows()
         {
             if (NavigationStack.Count <= 1)
+            {
                 return false;
+            }
+
             while (NavigationStack.Count > 1)
             {
                 NavigationStack.Pop().Close();
             }
+
             NavigationStack.Peek().Show();
             return true;
         }
     }
 }
 
-    /*
-        public void OnNextClicked(object sender, EventArgs args)
-        {
-            NavigationService.NavigateTo(new Window2());
-        
+/*
+    public void OnNextClicked(object sender, EventArgs args)
+    {
+        NavigationService.NavigateTo(new Window2());
+    }
 
-        public void OnPreviousClicked(object sender, EventArgs args)
-        {
-            NavigationService.NavigateBack();
-        }
-    */
+    public void OnPreviousClicked(object sender, EventArgs args)
+    {
+        NavigationService.NavigateBack();
+    }
+*/
