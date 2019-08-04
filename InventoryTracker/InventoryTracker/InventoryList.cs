@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Runtime.InteropServices;
 using System.IO;
-using System.Collections;
-//using Excel = Microsoft.Office.Interop.Excel;
-
 
 namespace InventoryTracker
 {
@@ -17,6 +9,7 @@ namespace InventoryTracker
         {
             return List.Add(value);
         }
+
         public InventoryItem this[int index]
         {
             get { return (InventoryItem)List[index]; }
@@ -30,6 +23,7 @@ namespace InventoryTracker
             string gparent = myDirectory.Parent.Parent.FullName;
             gparent += "\\InventoryDatabase.csv";
             var reader = new StreamReader(@gparent);
+
             while (!reader.EndOfStream)
             {
                 string line = reader.ReadLine();
@@ -37,6 +31,7 @@ namespace InventoryTracker
 
                 inList.Add(new InventoryItem(data[0], Int32.Parse(data[1]), Int32.Parse(data[2])));
             }
+
             reader.Close();
             PercentageFillerAll(inList);
 
@@ -114,6 +109,7 @@ namespace InventoryTracker
                 PercentageFillerSingle(inList, i);
             }
         }
+
         public static void PercentageFillerSingle(InventoryList inList, int i)
         {
             inList[i].Percentage = 100 * inList[i].CurrentStock / inList[i].IdealStock;

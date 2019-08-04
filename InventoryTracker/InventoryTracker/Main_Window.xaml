@@ -1,0 +1,68 @@
+﻿<Window x:Class="InventoryTracker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InventoryTracker"
+        mc:Ignorable="d" Title="Inventory Tracker - Home" Height="450" Width="800">
+
+    <Border BorderBrush="Black" BorderThickness="10,10,10,10">
+
+        <StackPanel x:Name="window_panel" VerticalAlignment="Top" DataContext="{Binding}">
+
+            <StackPanel x:Name="title_panel" Margin="0,20,0,20">
+                <TextBlock Text="Inventory Tracker" TextAlignment="Center" FontSize="25" FontWeight="Medium" />
+            </StackPanel>
+
+            <Grid x:Name="button_grid" Margin="0,0,0,20">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Row="0" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" Width="300" Content="Add Item" Click="Add_Item_Button" />
+                <Button Grid.Row="0" Grid.Column="1" FontSize="20" HorizontalAlignment="Center" Width="300" Content="Iterative Update" Click="Full_Inventory_Button" />
+
+            </Grid>
+
+            <DataGrid x:Name="InventoryListing" ItemsSource="{Binding}" AutoGenerateColumns="False" IsReadOnly="True" ColumnWidth="*">
+
+                <DataGrid.Resources>
+
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="FontSize" Value="20"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    </Style>
+
+                    <Style TargetType="{x:Type DataGridCell}">
+                        <Setter Property="FontSize" Value="20"/>
+                        <Setter Property="FontWeight" Value="Light"/>
+                    </Style>
+                    
+                </DataGrid.Resources>
+
+                <DataGrid.Columns>
+                    
+                    <DataGridTextColumn Header="Product" Width="4*" Binding="{Binding ItemName}" />
+                    <DataGridTextColumn Header="Actual" Width="2*" Binding="{Binding CurrentStock}" />
+                    <DataGridTextColumn Header="Ideal" Width="2*" Binding="{Binding IdealStock}" />
+                    <DataGridTextColumn Header="%" Width="*" Binding="{Binding Percentage}" />
+                    
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="Edit_Button">Edit</Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                </DataGrid.Columns>
+                
+            </DataGrid>
+
+        </StackPanel>
+
+    </Border>
+    
+</Window>

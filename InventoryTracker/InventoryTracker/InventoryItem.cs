@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InventoryTracker
 {
@@ -21,8 +17,11 @@ namespace InventoryTracker
         }
 
         public String ItemName { get => itemName; set => itemName = value; }
+
         public int CurrentStock { get => currentStock; set => currentStock = value; }
+
         public int IdealStock { get => idealStock; set => idealStock = value; }
+
         public int Percentage { get => percentage; set => percentage = value; }
     }
 }
