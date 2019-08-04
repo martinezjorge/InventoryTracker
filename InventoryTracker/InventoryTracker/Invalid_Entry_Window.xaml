@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InventoryTracker"
-        mc:Ignorable="d" Title="Inventory Tracker - Invalid Entry" Height="450" Width="800">
+        mc:Ignorable="d" Title="Inventory Tracker - Invalid Entry" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
 
     <Border BorderBrush="Black" BorderThickness="10,10,10,10">
 
@@ -15,7 +16,7 @@
             </StackPanel>
 
             <StackPanel x:Name="button_panel">
-                <Button Content="OK" FontSize="20" Width="100" />
+                <Button Content="OK" FontSize="20" Width="100" Click="Ok_Button" />
             </StackPanel>
 
         </StackPanel>

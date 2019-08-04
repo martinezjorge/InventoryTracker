@@ -49,6 +49,14 @@ namespace InventoryTracker
                 valid = false;
             }
             
+            //not valid if idealstock is 0
+            if (valid)
+            {
+                if (Int32.Parse(IdealStock) == 0)
+                {
+                    valid = false;
+                }
+            }
 
             // if not valid then InvalidEntry popup window
             if (!valid)

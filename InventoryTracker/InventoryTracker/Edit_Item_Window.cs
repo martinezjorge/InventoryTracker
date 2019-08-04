@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Text.RegularExpressions;
 
 namespace InventoryTracker
 {
@@ -84,6 +85,13 @@ namespace InventoryTracker
             mainWindow.Show();
             // closes the instance of the edit item window
             this.Close();
+        }
+
+        // uses regular expressions to ensure nonintegers cannot be entered into integer text fields
+        private void IntegerValidation(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }
