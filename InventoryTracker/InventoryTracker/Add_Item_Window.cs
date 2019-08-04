@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Text.RegularExpressions;
 
 namespace InventoryTracker
 {
@@ -22,22 +23,38 @@ namespace InventoryTracker
             // grabs the index of the row from global; never used
             itemIndex = Global.GetIndex();
             // Creates temporary data to populate the add item interface
-            tempInventoryItem = new InventoryItem("Insert Item Name", 0, 0);
+            tempInventoryItem = new InventoryItem("", 0, 0);
             // Populates the add item interface
             window_panel.DataContext = tempInventoryItem;
         }
         private void Submit_Add_Button(object sender, RoutedEventArgs e)
         {
-            // Uses add method from inventoryList class to add the data in textboxes to inventory list
-            inventoryList.Add(tempInventoryItem);
-            // Calculates the percentage for the new item added to the inventory
-            InventoryList.PercentageFillerSingle(inventoryList, inventoryList.Count - 1);
-            // Creates a new instance of the main window
-            Window mainWindow = new MainWindow();
-            // Shows the new instance of the main window
-            mainWindow.Show();
-            // Closes the instance of the add item window
-            this.Close();
+            /*
+                 Data Validation on the text boxes
+
+                     true => add item
+                     false => invalidEntry window
+            */
+            if (Global.IsValid(AddItemNameBox.Text, AddItemCurrentStockBox.Text, AddItemIdealStockBox.Text))
+            {
+                // Uses add method from inventoryList class to add the data in textboxes to inventory list
+                inventoryList.Add(tempInventoryItem);
+                // Calculates the percentage for the new item added to the inventory
+                InventoryList.PercentageFillerSingle(inventoryList, inventoryList.Count - 1);
+                // Creates a new instance of the main window
+                Window mainWindow = new MainWindow();
+                // Shows the new instance of the main window
+                mainWindow.Show();
+                // Closes the instance of the add item window
+                this.Close();
+            }
+            else
+            {
+                // create an instance of the invalid entry window
+                Window invalidEntry = new InvalidEntry();
+                // show it, however the edit item window is not closed
+                invalidEntry.Show();
+            }
         }
         private void Submit_Cancel_Button(object sender, RoutedEventArgs e)
         {
@@ -47,6 +64,13 @@ namespace InventoryTracker
             mainWindow.Show();
             // Closes the instance of the add item window
             this.Close();
+        }
+
+        // uses regular expressions to ensure nonintegers cannot be entered into integer text fields
+        private void IntegerValidation(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

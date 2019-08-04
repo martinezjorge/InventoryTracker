@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Git\InventoryFork\InventoryTracker\InventoryTracker\obj\Debug\
+C:\Users\Nathan\Documents\OneDrive\School\COMP380\arcturusthethird\InventoryTracker\InventoryTracker\InventoryTracker\obj\Debug\
 InventoryTracker
 none
 false
 DEBUG;TRACE
-D:\Git\InventoryFork\InventoryTracker\InventoryTracker\App.xaml
-4-37055042
+C:\Users\Nathan\Documents\OneDrive\School\COMP380\arcturusthethird\InventoryTracker\InventoryTracker\InventoryTracker\App.xaml
+5-434631778
 
-13-1283601985
+121541483161
 13-1505183044
-Edit_ItemWindow.xaml;InvalidEntry.xaml;MainWindow.xaml;Add_ItemWindow.xaml;
+Edit_Item_Window.xaml;Invalid_Entry_Window.xaml;Iterative_Update_Window.xaml;Main_Window.xaml;Add_Item_Window.xaml;
 
-True
+False
 

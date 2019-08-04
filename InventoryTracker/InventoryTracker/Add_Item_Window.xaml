@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InventoryTracker"
-        mc:Ignorable="d" Title="Inventory Tracker - Add Item" Height="450" Width="800">
+        mc:Ignorable="d" Title="Inventory Tracker - Add Item" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
 
     <Border BorderBrush="Black" BorderThickness="10,10,10,10">
 
@@ -27,13 +28,15 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,20" Text="Item Name" />
-                <TextBox Grid.Row="0" Grid.Column="1" Width="450" HorizontalAlignment="Left" Margin="0,0,0,20" TextWrapping="Wrap" Text="{Binding ItemName}" />
+                <TextBox Name="AddItemNameBox" Grid.Row="0" Grid.Column="1" Width="450" HorizontalAlignment="Left" Margin="0,0,0,20" TextWrapping="Wrap" Text="{Binding ItemName}" FontSize="20"/>
 
                 <TextBlock Grid.Row="1" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,20" Text="Current Stock" />
-                <TextBox Grid.Row="1" Grid.Column="1" Width="450" HorizontalAlignment="Left" Margin="0,0,0,20" TextWrapping="Wrap" Text="{Binding CurrentStock}" />
+                <TextBox Name="AddItemCurrentStockBox" Grid.Row="1" Grid.Column="1" Width="450" HorizontalAlignment="Left" Margin="0,0,0,20" TextWrapping="Wrap" Text="{Binding CurrentStock}"
+                         FontSize="20" PreviewTextInput="IntegerValidation"/>
 
                 <TextBlock Grid.Row="2" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" Text="Ideal Stock" />
-                <TextBox Grid.Row="2" Grid.Column="1" Width="450" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding IdealStock}" />
+                <TextBox Name="AddItemIdealStockBox" Grid.Row="2" Grid.Column="1" Width="450" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding IdealStock}"
+                         FontSize="20" PreviewTextInput="IntegerValidation"/>
             </Grid>
 
             <Grid x:Name="button_grid">
