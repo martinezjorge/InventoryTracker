@@ -13,14 +13,26 @@ namespace InventoryTracker
     /// </summary>
     public partial class App : Application
     {
+        // creates an instance of inventory list on startup
         static InventoryList inventoryList = null;
+
+        // behaviour when the program is started
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            //inventoryList = InventoryList.FillInventoryListFromExcel();
+            // populate the instance of the inventory item list on start up
             inventoryList = InventoryList.FillInventoryListFromCSV();
         }
 
+        // behaviour when the program is closed
+        protected override void OnExit(ExitEventArgs e)
+        {
+            base.OnExit(e);
+            // Writes the data in the dynamic inventory list to the csv whenever the program is closed
+            InventoryList.WriteFullInventoryListToCSV(inventoryList);
+        }
+
+        // returns the inventory list whenever called
         internal InventoryList GetInventoryList()
         {
             return inventoryList;

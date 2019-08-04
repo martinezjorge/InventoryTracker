@@ -5,85 +5,98 @@ namespace InventoryTracker
 {
     class InventoryList : System.Collections.CollectionBase
     {
+        // static method to fill inventory list from csv
+        public static InventoryList FillInventoryListFromCSV()
+        {
+            // creates an inventory list object
+            InventoryList inList = new InventoryList();
+            // creates an directory path object
+            System.IO.DirectoryInfo myDirectory = new DirectoryInfo(Environment.CurrentDirectory);
+            // finds the path to the folder the csv file is in
+            string gparent = myDirectory.Parent.Parent.FullName;
+            // concats the name of the file to the path
+            gparent += "\\InventoryDatabase.csv";
+            // creates a file object to read the csv file
+            var reader = new StreamReader(@gparent);
+
+            // while not the end of file
+            while (!reader.EndOfStream)
+            {
+                // read the line
+                string line = reader.ReadLine();
+                // split by comma
+                string[] data = line.Split(',');
+                // add the row to the inventory list object
+                inList.Add(new InventoryItem(data[0], Int32.Parse(data[1]), Int32.Parse(data[2])));
+            }
+            // close the file object
+            reader.Close();
+            // calculate the stock percentages for all the items in the inventory list
+            PercentageFillerAll(inList);
+
+            // return the inventory list
+            return inList;
+        }
+
+        // method to write everything in the inventory list object to a csv
+        public static void WriteFullInventoryListToCSV(InventoryList inList)
+        {
+            // creates a directory path object
+            System.IO.DirectoryInfo myDirectory = new DirectoryInfo(Environment.CurrentDirectory);
+            // stores the path to the folder the csv file is in in a string
+            string gparent = myDirectory.Parent.Parent.FullName;
+            // concats the file name to the pathname
+            gparent += "\\InventoryDatabase.csv";
+            // creates a file writer object to write to the csv file; this method overwrites the file
+            var writer = new StreamWriter(@gparent);
+
+            // goes through every inventory item in the inventory list
+            for (int i = 0; i < inList.Count; i++)
+            {
+                // writes a row to the csv file
+                writer.WriteLine(string.Format("{0},{1},{2}", inList[i].ItemName, inList[i].CurrentStock, inList[i].IdealStock));
+                // clears the buffer
+                writer.Flush();
+            }
+            // closes the file writer object
+            writer.Close();
+        }
+
+        // method to add an item to the end of the inventory list
         public int Add(InventoryItem value)
         {
             return List.Add(value);
         }
 
+        // returns this index of the inventory item in the inventory list
         public InventoryItem this[int index]
         {
+            // gets the index of the current inventory item
             get { return (InventoryItem)List[index]; }
+            // sets the value in the current index in the inventory item
             set { List[index] = value; }
         }
 
-        public static InventoryList FillInventoryListFromCSV()
+        // Method to run the percentage fill single method on all the inventorylist rows
+        public static void PercentageFillerAll(InventoryList inList)
         {
-            InventoryList inList = new InventoryList();
-            System.IO.DirectoryInfo myDirectory = new DirectoryInfo(Environment.CurrentDirectory);
-            string gparent = myDirectory.Parent.Parent.FullName;
-            gparent += "\\InventoryDatabase.csv";
-            var reader = new StreamReader(@gparent);
-
-            while (!reader.EndOfStream)
+            // goes through every row in the inventory list
+            for (int i = 0; i < inList.Count; i++)
             {
-                string line = reader.ReadLine();
-                string[] data = line.Split(',');
-
-                inList.Add(new InventoryItem(data[0], Int32.Parse(data[1]), Int32.Parse(data[2])));
+                // calclulates the perfect
+                PercentageFillerSingle(inList, i);
             }
-
-            reader.Close();
-            PercentageFillerAll(inList);
-
-            return inList;
         }
-        /*
-        public static InventoryList FillInventoryListFromExcel()
+
+        // calculates the percentage for a given inventory item stock
+        public static void PercentageFillerSingle(InventoryList inList, int i)
         {
-            InventoryList inList = new InventoryList();
-            Excel.Application xlapplication = new Excel.Application();
-            xlapplication.Visible = false;
-            System.IO.DirectoryInfo myDirectory = new DirectoryInfo(Environment.CurrentDirectory);
-            string gparent = myDirectory.Parent.Parent.FullName;
-            gparent += "\\InventoryDatabase.xlsx";
-            Excel.Workbook xlworkbook = xlapplication.Workbooks.Open(@gparent);
-            Excel.Worksheet xlworksheet = (Excel.Worksheet)xlworkbook.Sheets[1];
-            Excel.Range xlrange = xlworksheet.UsedRange;
-
-            int rowCount = xlrange.Rows.Count;
-            int colCount = xlrange.Columns.Count;
-
-            //excel not zero based; skip first row of excel worksheet
-            for (int row = 2; row <= rowCount; row++)
-            {
-                inList.Add(new InventoryItem((String)xlrange.Cells[row, 1].Value2, (int)xlrange.Cells[row, 2].Value2, (int)xlrange.Cells[row, 3].Value2));
-            }
-
-            //garbage collection
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-
-            xlworkbook.Save();
-
-            //release com objects to fully kill excel process from running in the background
-            Marshal.ReleaseComObject(xlrange);
-            Marshal.ReleaseComObject(xlworksheet);
-
-            //close and release
-            xlworkbook.Close();
-            Marshal.ReleaseComObject(xlworkbook);
-
-            //quit and release
-            xlapplication.Quit();
-            Marshal.ReleaseComObject(xlapplication);
-
-            //fills in the percentages
-            PercentageFillerAll(inList);
-
-            return inList;
+            // calculates the percentage
+            inList[i].Percentage = 100 * inList[i].CurrentStock / inList[i].IdealStock;
         }
-        */
 
+
+        // Currently not used
         public static void PrintInventoryList(InventoryList inList)
         {
             Console.WriteLine("Capacity: {0}", inList.Capacity);
@@ -95,6 +108,7 @@ namespace InventoryTracker
             }
         }
 
+        // Currently not used
         public static void FillAdditionalSampleItems(InventoryList inList)
         {
             inList.Add(new InventoryItem("Computer", 3, 5));
@@ -102,73 +116,5 @@ namespace InventoryTracker
             inList.Add(new InventoryItem("Keyboard", 3, 4));
         }
 
-        public static void PercentageFillerAll(InventoryList inList)
-        {
-            for(int i = 0; i < inList.Count; i++)
-            {
-                PercentageFillerSingle(inList, i);
-            }
-        }
-
-        public static void PercentageFillerSingle(InventoryList inList, int i)
-        {
-            inList[i].Percentage = 100 * inList[i].CurrentStock / inList[i].IdealStock;
-        }
-
-        public static void WriteFullInventoryListToCSV(InventoryList inList)
-        {
-            System.IO.DirectoryInfo myDirectory = new DirectoryInfo(Environment.CurrentDirectory);
-            string gparent = myDirectory.Parent.Parent.FullName;
-            gparent += "\\InventoryDatabase.csv";
-            var writer = new StreamWriter(@gparent);
-
-            for (int i = 0; i < inList.Count; i++)
-            {
-                writer.WriteLine(string.Format("{0},{1},{2}", inList[i].ItemName, inList[i].CurrentStock, inList[i].IdealStock));
-                writer.Flush();
-            }
-            writer.Close();
-        }
-
-        /*
-        public static void WriteInventoryListToExcel(InventoryList inList)
-        {
-            Excel.Application xlapplication = new Excel.Application();
-            xlapplication.Visible = false;
-            System.IO.DirectoryInfo myDirectory = new DirectoryInfo(Environment.CurrentDirectory);
-            string gparent = myDirectory.Parent.Parent.FullName;
-            gparent += "\\InventoryDatabase.xlsx";
-            Excel.Workbook xlworkbook = xlapplication.Workbooks.Open(@gparent);
-            Excel.Worksheet xlworksheet = (Excel.Worksheet)xlworkbook.Sheets[1];
-            Excel.Range xlrange = xlworksheet.UsedRange;
-            int row = 2;
-
-            for (int i = 0; i < inList.Count; i++)
-            {
-                xlworksheet.Cells[row, 1] = inList[i].ItemName;
-                xlworksheet.Cells[row, 2] = inList[i].CurrentStock;
-                xlworksheet.Cells[row, 3] = inList[i].IdealStock;
-                row += 1;
-            }
-
-            //garbage collection
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-
-            xlworkbook.Save();
-
-            //release com objects to fully kill excel process from running in the background
-            Marshal.ReleaseComObject(xlrange);
-            Marshal.ReleaseComObject(xlworksheet);
-
-            //close and release
-            xlworkbook.Close();
-            Marshal.ReleaseComObject(xlworkbook);
-
-            //quit and release
-            xlapplication.Quit();
-            Marshal.ReleaseComObject(xlapplication);
-        }
-        */
     }
 }

@@ -9,12 +9,15 @@ namespace InventoryTracker
 {
     public class Global
     {
-        private static int index = -1; // default value that isn't in range
+        // default value that isn't in range
+        private static int index = -1; 
         
+        // Setter method for the global item index
         internal static void SetIndex(int value)
         {
             index = value;
         }
+        // getter method for the gloval item index
         internal static int GetIndex()
         {
             return index;
@@ -27,7 +30,7 @@ namespace InventoryTracker
             bool isNumeric;
 
 
-            // item name should be reasonable length
+            // If length of the item length is greater than 40 or less than 1 its not valid
             if (Name.Length > 40 || Name.Length < 1)
             {
                 valid = false;
