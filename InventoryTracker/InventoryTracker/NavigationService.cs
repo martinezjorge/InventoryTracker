@@ -3,6 +3,8 @@ using System.Windows;
 
 // Taken from: https://stackoverflow.com/questions/30860276/return-to-previous-window-on-wpf
 
+// Not being used in the program at the moment
+
 namespace InventoryTracker
 {
     public static class NavigationService
@@ -73,15 +75,3 @@ namespace InventoryTracker
         }
     }
 }
-
-/*
-    public void OnNextClicked(object sender, EventArgs args)
-    {
-        NavigationService.NavigateTo(new Window2());
-    }
-
-    public void OnPreviousClicked(object sender, EventArgs args)
-    {
-        NavigationService.NavigateBack();
-    }
-*/
