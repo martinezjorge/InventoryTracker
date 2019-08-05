@@ -46,9 +46,9 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <Button Grid.Row="0" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" Width="200" Content="Update --> Next" Click="Update_Next" />
-                <Button Grid.Row="0" Grid.Column="1" FontSize="20" HorizontalAlignment="Center" Width="200" Content="Update --> Home" Click="Update_Home" />
-                <Button Grid.Row="0" Grid.Column="2" FontSize="20" HorizontalAlignment="Center" Width="200" Content="Cancel" Click="Cancel_Button" />
+                <Button x:Name="UpdateNextButton" Style="{DynamicResource RoundCorner}" Grid.Row="0" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" Width="200" Content="Update --> Next" Click="Update_Next" />
+                <Button x:Name="UpdateHomeButton" Style="{DynamicResource RoundCorner}" Grid.Row="0" Grid.Column="1" FontSize="20" HorizontalAlignment="Center" Width="200" Content="Update --> Home" Click="Update_Home" />
+                <Button x:Name="IterativeCancelButton" Style="{DynamicResource RoundCorner}" Grid.Row="0" Grid.Column="2" FontSize="20" HorizontalAlignment="Center" Width="200" Content="Cancel" Click="Cancel_Button" />
             </Grid>
 
         </StackPanel>
