@@ -25,6 +25,9 @@ namespace InventoryTracker
 
         internal static bool IsValid(String Name, String CurrentStock, String IdealStock)
         {
+            //gets the inventorylist to be used for checking for duplications
+            InventoryList inventoryList = ((App)Application.Current).GetInventoryList();
+            
             // *********data validation*******************//
             bool valid = true;
             bool isNumeric;
@@ -54,6 +57,16 @@ namespace InventoryTracker
             {
                 if (Int32.Parse(IdealStock) == 0)
                 {
+                    valid = false;
+                }
+            }
+
+            // checking if item will be a duplicate
+            for(int i = 0; i < inventoryList.Count; i++)
+            {
+                //if (Name.Equals(inventoryList[i].ItemName)){ //exact matching
+                //case insensitive check for duplicates
+                if (string.Compare(inventoryList[i].ItemName, Name, StringComparison.OrdinalIgnoreCase) == 0) { 
                     valid = false;
                 }
             }
