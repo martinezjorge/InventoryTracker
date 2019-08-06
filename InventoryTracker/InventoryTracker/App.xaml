@@ -17,7 +17,7 @@
                             <Grid x:Name="grid">
 
                                 <!-- **********Settings to change Roundess, border color, and border thickness**************** -->
-                                <Border x:Name="border" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                                <Border x:Name="border" CornerRadius="8" BorderBrush="Gray" BorderThickness="1">
                                     <Border.Background>
                                         <RadialGradientBrush GradientOrigin="0.496,1.052">
                                             <RadialGradientBrush.RelativeTransform>
