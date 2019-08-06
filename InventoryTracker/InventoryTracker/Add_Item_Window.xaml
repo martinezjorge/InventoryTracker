@@ -50,8 +50,8 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <Button Grid.Row="0" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" Width="300" Content="Submit" Click="Submit_Add_Button" />
-                <Button Grid.Row="0" Grid.Column="1" FontSize="20" HorizontalAlignment="Center" Width="300" Content="Cancel" Click="Submit_Cancel_Button" />
+                <Button x:Name="AddItemSubmitButton" Style="{DynamicResource RoundCorner}" Grid.Row="0" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" Width="300" Content="Submit" Click="Submit_Add_Button" />
+                <Button x:Name="AddItemCancelButton" Style="{DynamicResource RoundCorner}" Grid.Row="0" Grid.Column="1" FontSize="20" HorizontalAlignment="Center" Width="300" Content="Cancel" Click="Submit_Cancel_Button" />
             </Grid>
 
         </StackPanel>

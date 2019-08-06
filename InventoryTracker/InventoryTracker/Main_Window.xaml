@@ -7,6 +7,10 @@
         mc:Ignorable="d" Title="Inventory Tracker - Home" Height="450" Width="800"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
+    
+   
+    
+    
 
     <Border BorderBrush="Black" BorderThickness="10,10,10,10">
 
@@ -23,8 +27,8 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Row="0" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" Width="300" Content="Add Item" Click="Add_Item_Button" />
-                <Button Grid.Row="0" Grid.Column="1" FontSize="20" HorizontalAlignment="Center" Width="300" Content="Iterative Update" Click="Full_Inventory_Button" />
+                <Button x:Name="AddItemButton" Style="{DynamicResource RoundCorner}" Grid.Row="0" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" Width="300" Content="Add Item" Click="Add_Item_Button" />
+                <Button x:Name="IterativeUpdateButton" Style="{DynamicResource RoundCorner}" Grid.Row="0" Grid.Column="1" FontSize="20" HorizontalAlignment="Center" Width="300" Content="Iterative Update" Click="Full_Inventory_Button" />
 
             </Grid>
 
