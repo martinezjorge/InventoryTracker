@@ -21,7 +21,7 @@
             </StackPanel>
 
             <StackPanel x:Name="button_panel">
-                <Button Content="OK" FontSize="20" Width="100" Click="Ok_Button" />
+                <Button x:Name="InvalidEntryOkButton" Style="{DynamicResource RoundCorner}" Content="OK" FontSize="20" Width="100" Click="Ok_Button" />
             </StackPanel>
 
         </StackPanel>
