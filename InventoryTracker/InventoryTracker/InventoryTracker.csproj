@@ -55,11 +55,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Edit_ItemWindow.xaml">
+    <Compile Include="Add_Item_Window.cs">
+      <DependentUpon>Add_Item_Window.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Edit_Item_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Invalid_Entry_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Iterative_Update_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Main_Window.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -67,16 +78,28 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Edit_ItemWindow.xaml.cs">
-      <DependentUpon>Edit_ItemWindow.xaml</DependentUpon>
+    <Compile Include="Edit_Item_Window.cs">
+      <DependentUpon>Edit_Item_Window.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="Global.cs" />
+    <Compile Include="Invalid_Entry_Window.cs">
+      <DependentUpon>Invalid_Entry_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryItem.cs" />
+    <Compile Include="InventoryList.cs" />
+    <Compile Include="Iterative_Update_Window.cs">
+      <DependentUpon>Iterative_Update_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Main_Window.cs">
+      <DependentUpon>Main_Window.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Add_Item_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
