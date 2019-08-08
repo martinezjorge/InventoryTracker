@@ -10,17 +10,31 @@ namespace InventoryTracker
     public class Global
     {
         // default value that isn't in range
-        private static int index = -1; 
-        
+        // this index is used for passing the index reference between windows
+        // to refer to the correct item
+        private static int index = -1;
+
         // Setter method for the global item index
         internal static void SetIndex(int value)
         {
             index = value;
         }
-        // getter method for the gloval item index
+        // getter method for the global item index
         internal static int GetIndex()
         {
             return index;
+        }
+
+        // default value that isn't in range
+        // this index will be used for passing along an error message to the
+        // Invalid Entry Window. It will be set via IsValid and thus only
+        // gettable, not settable
+        private static int errorIndex = -1;
+
+        // getter method for the error index
+        internal static int GetErrorIndex()
+        {
+            return errorIndex;
         }
 
         internal static bool IsValid(String Name, String CurrentStock, String IdealStock)
@@ -37,37 +51,56 @@ namespace InventoryTracker
             if (Name.Length > 40 || Name.Length < 1)
             {
                 valid = false;
+                errorIndex = 0;
             }
 
             // not valid if not a number
-            isNumeric = int.TryParse(CurrentStock, out _);
-            if (!isNumeric)
+            // if invalid already, skip
+            if (valid)
             {
-                valid = false;
+                isNumeric = int.TryParse(CurrentStock, out _);
+                if (!isNumeric)
+                {
+                    valid = false;
+                    errorIndex = 1;
+                }
             }
 
-            isNumeric = int.TryParse(IdealStock, out _);
-            if (!isNumeric)
+            // if invalid already, skip
+            if (valid)
             {
-                valid = false;
+                isNumeric = int.TryParse(IdealStock, out _);
+                if (!isNumeric)
+                {
+                    valid = false;
+                    errorIndex = 2;
+                }
             }
-            
+
             //not valid if idealstock is 0
+            // if invalid already, skip
             if (valid)
             {
                 if (Int32.Parse(IdealStock) == 0)
                 {
                     valid = false;
+                    errorIndex = 3;
                 }
             }
 
             // checking if item will be a duplicate
-            for(int i = 0; i < inventoryList.Count; i++)
+            // if invalid already, skip
+            if (valid)
             {
-                //if (Name.Equals(inventoryList[i].ItemName)){ //exact matching
-                //case insensitive check for duplicates
-                if (string.Compare(inventoryList[i].ItemName, Name, StringComparison.OrdinalIgnoreCase) == 0) { 
-                    valid = false;
+                for (int i = 0; i < inventoryList.Count; i++)
+                {
+                    //if (Name.Equals(inventoryList[i].ItemName)){ //exact matching
+                    //case insensitive check for duplicates
+                    if (string.Compare(inventoryList[i].ItemName, Name, StringComparison.OrdinalIgnoreCase) == 0)
+                    {
+                        valid = false;
+                        errorIndex = 4;
+                    }
                 }
             }
 

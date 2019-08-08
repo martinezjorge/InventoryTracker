@@ -7,6 +7,7 @@
 // Leslie Ledeboer
 
 using System.Windows;
+using System.Windows.Controls;
 
 namespace InventoryTracker
 {
@@ -33,9 +34,10 @@ namespace InventoryTracker
         {
             // int index = InventoryListing.SelectedIndex
             // this gets the row # (starts at 0 for top of list)
-
             // Sets a global variable to the index of the selected row
-            Global.SetIndex(InventoryListing.SelectedIndex);
+            //Global.SetIndex(InventoryListing.SelectedIndex);
+            //Global.SetReferencedInventoryItem((InventoryItem)InventoryListing.SelectedItem);
+            Global.SetIndex(inventoryList[(InventoryItem)InventoryListing.SelectedItem]);
             // Creates an instance of the edit item window
             Window editItemWindow = new EditItem();
             // Makes the instance visible
@@ -47,8 +49,6 @@ namespace InventoryTracker
         // logic for the add item button
         private void Add_Item_Button(object sender, RoutedEventArgs e)
         {
-            // Sets the global variable to the index of the selected row
-            Global.SetIndex(InventoryListing.SelectedIndex);
             // creates an instances of the add item window
             Window addItemWindow = new AddItem();
             // shows the instance of the add item window

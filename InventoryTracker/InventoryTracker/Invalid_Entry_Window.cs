@@ -10,6 +10,15 @@ namespace InventoryTracker
         public InvalidEntry()
         {
             InitializeComponent();
+            string[] errorMessages =
+            {
+                "Item Name length is not valid", // 0
+                "Current Stock is not a valid", // 1
+                "Ideal Stock is not a valid", // 2
+                "Ideal Stock cannot be 0", // 3
+                "Item will be a duplicate" // 4
+            };
+            error_message_panel.DataContext = errorMessages[Global.GetErrorIndex()];
         }
         private void Ok_Button(object sender, RoutedEventArgs e)
         {
