@@ -41,7 +41,8 @@ namespace InventoryTracker
         {
             //gets the inventorylist to be used for checking for duplications
             InventoryList inventoryList = ((App)Application.Current).GetInventoryList();
-            
+
+
             // *********data validation*******************//
             bool valid = true;
             bool isNumeric;
@@ -96,10 +97,13 @@ namespace InventoryTracker
                 {
                     //if (Name.Equals(inventoryList[i].ItemName)){ //exact matching
                     //case insensitive check for duplicates
-                    if (string.Compare(inventoryList[i].ItemName, Name, StringComparison.OrdinalIgnoreCase) == 0)
+                    if (i != index)
                     {
-                        valid = false;
-                        errorIndex = 4;
+                        if (string.Compare(inventoryList[i].ItemName, Name, StringComparison.OrdinalIgnoreCase) == 0)
+                        {
+                            valid = false;
+                            errorIndex = 4;
+                        }
                     }
                 }
             }
