@@ -1,0 +1,59 @@
+﻿<Window x:Class="InventoryTracker.Register"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InventoryTracker"
+        mc:Ignorable="d"
+        Title="User Registration" Height="532.2" Width="800"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+
+    <Border BorderBrush="Black" BorderThickness="10,10,10,10">
+
+        <StackPanel x:Name="login_panel" VerticalAlignment="Top" DataContext="{Binding}">
+
+            <StackPanel x:Name="title_panel" Margin="0,20,0,20">
+                <TextBlock Text="User Registration" TextAlignment="Center" FontSize="25" FontWeight="Medium" />
+            </StackPanel>
+
+            <Grid x:Name="button_grid" Margin="0,20,0,20">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="First Name" TextAlignment="Center" Grid.Row="0" Grid.Column="0" FontSize="25" FontWeight="Medium" Margin="0,0,0,20" />
+                <TextBox x:Name="fname" Text="" TextAlignment="Center" Grid.Row="0" FontSize="25" FontWeight="Medium"  Margin="354,0,32.6,20.2" Grid.ColumnSpan="2" />
+
+                <TextBlock Text="Last Name" TextAlignment="Center" Grid.Row="1" Grid.Column="0" FontSize="25" FontWeight="Medium" Margin="0,0,0,20" />
+                <TextBox x:Name="lname" Text="" TextAlignment="Center" Grid.Row="1" FontSize="25" FontWeight="Medium" Margin="354,0.4,32.6,19.8" Grid.ColumnSpan="2" />
+
+                <TextBlock Text="Username" TextAlignment="Center" Grid.Row="2" Grid.Column="0" FontSize="25" FontWeight="Medium" Margin="0,0,0,20" />
+                <TextBox x:Name="username" Text="" TextAlignment="Center" Grid.Row="1" FontSize="25" FontWeight="Medium" Margin="354,55.4,32.6,20.4" Grid.ColumnSpan="2" Grid.RowSpan="2" />
+
+                <TextBlock Text="Password" TextAlignment="Center" Grid.Row="3" Grid.Column="0" FontSize="25" FontWeight="Medium" Margin="0,0,0,20" />
+                <TextBox x:Name="password" Text="" TextAlignment="Center" Grid.Row="2" FontSize="25" FontWeight="Medium"  Margin="354,53.893,32.6,19.76" Grid.ColumnSpan="2" Grid.RowSpan="2" />
+
+                <TextBlock Text="Rank" TextAlignment="Center" Grid.Row="4" Grid.Column="0" FontSize="25" FontWeight="Medium" Margin="0,0,0,20" />
+                <TextBox x:Name="rank" Text="" TextAlignment="Center" Grid.Row="3" FontSize="25" FontWeight="Medium"  Margin="354,53.893,32.6,19.76" Grid.ColumnSpan="2" Grid.RowSpan="2" />
+
+                <Button x:Name="SubmitButton" Style="{DynamicResource RoundCorner}" Grid.Row="5" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" Width="150" Content="Submit" Click="SubmitButton_Click" Margin="125,38.4,111.8,-38" />
+                <Button x:Name="CancelButton" Style="{DynamicResource RoundCorner}" Grid.Row="5" Grid.Column="1" FontSize="20" HorizontalAlignment="Center" Width="150" Content="Cancel" Click="CancelButton_Click" Margin="96.2,44.4,140.6,-43.6" />
+
+            </Grid>
+
+        </StackPanel>
+
+    </Border>
+</Window>

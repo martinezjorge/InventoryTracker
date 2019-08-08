@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 
 namespace InventoryTracker
 {
@@ -21,7 +15,7 @@ namespace InventoryTracker
         {
             base.OnStartup(e);
             // populate the instance of the inventory item list on start up
-            inventoryList = InventoryList.FillInventoryListFromCSV();
+            inventoryList = InventoryList.FillInventoryListFromSQL();
         }
 
         // behaviour when the program is closed
@@ -32,7 +26,7 @@ namespace InventoryTracker
             InventoryList.WriteFullInventoryListToCSV(inventoryList);
         }
 
-        // returns the inventory list whenever called
+        // a custom class specific to this project, returns the inventory list whenever called
         internal InventoryList GetInventoryList()
         {
             return inventoryList;

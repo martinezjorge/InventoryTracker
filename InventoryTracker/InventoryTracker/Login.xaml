@@ -1,0 +1,52 @@
+﻿<Window x:Class="InventoryTracker.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InventoryTracker"
+        mc:Ignorable="d"
+        Title="Inventory Tracker" Height="329.8" Width="471.2"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    <Border BorderBrush="Black" BorderThickness="10,10,10,10">
+
+        <StackPanel x:Name="login_panel" VerticalAlignment="Top" DataContext="{Binding}">
+
+            <StackPanel x:Name="title_panel" Margin="0,20,0,20">
+                <TextBlock Text="Login" TextAlignment="Center" FontSize="25" FontWeight="Medium" />
+            </StackPanel>
+
+            <Grid x:Name="button_grid" Margin="0,0,0,20">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Username" TextAlignment="Center" Grid.Row="0" FontSize="25" FontWeight="Medium" Margin="0,0,0,20" />
+                <TextBox x:Name="username" Text="" TextAlignment="Center" Grid.Row="0" FontSize="25" FontWeight="Medium" Margin="210,2,21.8,18.306" Grid.ColumnSpan="2"  />
+                <TextBlock Text="Password" TextAlignment="Center" Grid.Row="3" Grid.Column="0" FontSize="25" FontWeight="Medium" />
+                <TextBox x:Name="password" Text="" TextAlignment="Center" FontSize="25" FontWeight="Medium" Height="35" Margin="210,0,21.8,31.706" Grid.RowSpan="5" VerticalAlignment="Bottom" Grid.ColumnSpan="2" />
+                <TextBlock Text="" TextAlignment="Center" Grid.Row="4" FontSize="25" FontWeight="Medium" />
+
+
+                <Button x:Name="LoginButton" Style="{DynamicResource RoundCorner}" Grid.Row="7" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" Width="150" Content="Login" Click="LoginButton_Click" />
+                <Button x:Name="RegisterButton" Style="{DynamicResource RoundCorner}" Grid.Row="7" Grid.Column="1" FontSize="20" HorizontalAlignment="Center" Width="150" Content="Register" Click="RegisterButton_Click" />
+
+            </Grid>
+
+        </StackPanel>
+
+    </Border>
+</Window>

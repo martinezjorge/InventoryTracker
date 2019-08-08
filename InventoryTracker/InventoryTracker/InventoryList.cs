@@ -1,10 +1,60 @@
 ﻿using System;
 using System.IO;
+using System.Data.SqlClient;    // local DB
+using System.Windows;
 
 namespace InventoryTracker
 {
     class InventoryList : System.Collections.CollectionBase
     {
+        // Static method to fill inventory list using a sql db query
+        public static InventoryList FillInventoryListFromSQL()
+        {
+            // Database connection
+            SqlConnection sqlCon = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=LoginDB; Integrated Security=True;");
+            // creates an inventory list object
+            InventoryList inList = new InventoryList();
+
+            try
+            {
+                // If the connection is closed
+                if (sqlCon.State == System.Data.ConnectionState.Closed)
+                    // Open it!
+                    sqlCon.Open();
+                // SQL Query with @placeholders for later bindings
+                String query = "SELECT * FROM tblInventory";
+
+                // Prepare the command with the query and db connection
+                SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+
+                // sql reader object to get all the rows from the query
+                using (SqlDataReader reader = sqlCmd.ExecuteReader())
+                {
+                    // While there are rows
+                    while (reader.Read())
+                        // Store sql row into an inventory item and add it to the inventory list
+                        inList.Add(new InventoryItem(String.Format("{0}", reader[0]), Convert.ToInt32(reader[1]), Convert.ToInt32(reader[2])));
+                }
+
+            }
+            catch (Exception ex)
+            {
+                // If theres an error this will throw the error message
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                // Always closes the db connection regardless of success or failure
+                sqlCon.Close();
+            }
+
+            // calculate the stock percentages for all the items in the inventory list
+            PercentageFillerAll(inList);
+
+            return inList;
+        }
+
+
         // static method to fill inventory list from csv
         public static InventoryList FillInventoryListFromCSV()
         {

@@ -75,6 +75,7 @@ namespace InventoryTracker
             // Close the instance of the iterative update window
             this.Close();
         }
+
         private void Cancel_Button(object sender, RoutedEventArgs e)
         {
             // Reset the global item index
