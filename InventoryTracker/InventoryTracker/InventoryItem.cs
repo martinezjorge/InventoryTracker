@@ -9,6 +9,11 @@ namespace InventoryTracker
         int idealStock;
         int percentage;
 
+        public InventoryItem()
+        {
+            ;
+        }
+
         public InventoryItem(String name, int cStock, int iStock)
         {
             itemName = name;

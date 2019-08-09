@@ -5,6 +5,32 @@ namespace InventoryTracker
 {
     class InventoryList : System.Collections.CollectionBase
     {
+        // method to add an item to the end of the inventory list
+        public int Add(InventoryItem value)
+        {
+            return List.Add(value);
+        }
+
+        // returns the inventory item at the given index in the inventory list
+        public InventoryItem this[int index]
+        {
+            // gets the index of the current inventory item
+            get { return (InventoryItem)List[index]; }
+            // sets the value in the current index in the inventory item
+            set { List[index] = value; }
+        }
+
+        // returns the index of the inventory item in the inventory list
+        public int this[InventoryItem inItem]
+        {
+            get { return List.IndexOf((InventoryItem)inItem); }
+        }
+
+        //this sorts the inventorylist in descending item name
+        public static void SortByItemName(InventoryList inList)
+        {
+            inList.InnerList.Sort(new myComparer());
+        }
         // static method to fill inventory list from csv
         public static InventoryList FillInventoryListFromCSV()
         {
@@ -34,6 +60,7 @@ namespace InventoryTracker
             // calculate the stock percentages for all the items in the inventory list
             PercentageFillerAll(inList);
 
+            SortByItemName(inList);
             // return the inventory list
             return inList;
         }
@@ -62,21 +89,6 @@ namespace InventoryTracker
             writer.Close();
         }
 
-        // method to add an item to the end of the inventory list
-        public int Add(InventoryItem value)
-        {
-            return List.Add(value);
-        }
-
-        // returns this index of the inventory item in the inventory list
-        public InventoryItem this[int index]
-        {
-            // gets the index of the current inventory item
-            get { return (InventoryItem)List[index]; }
-            // sets the value in the current index in the inventory item
-            set { List[index] = value; }
-        }
-
         // Method to run the percentage fill single method on all the inventorylist rows
         public static void PercentageFillerAll(InventoryList inList)
         {
@@ -94,27 +106,5 @@ namespace InventoryTracker
             // calculates the percentage
             inList[i].Percentage = 100 * inList[i].CurrentStock / inList[i].IdealStock;
         }
-
-
-        // Currently not used
-        public static void PrintInventoryList(InventoryList inList)
-        {
-            Console.WriteLine("Capacity: {0}", inList.Capacity);
-            Console.WriteLine("Count: {0}", inList.Count);
-
-            for (int i = 0; i < inList.Count; i++)
-            {
-                Console.WriteLine("Item Name: " + inList[i].ItemName + " Current Stock: " + inList[i].CurrentStock + " Ideal Stock: " + inList[i].IdealStock);
-            }
-        }
-
-        // Currently not used
-        public static void FillAdditionalSampleItems(InventoryList inList)
-        {
-            inList.Add(new InventoryItem("Computer", 3, 5));
-            inList.Add(new InventoryItem("Monitor", 2, 3));
-            inList.Add(new InventoryItem("Keyboard", 3, 4));
-        }
-
     }
 }

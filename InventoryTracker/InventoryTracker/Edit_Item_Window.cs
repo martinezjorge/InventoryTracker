@@ -59,6 +59,8 @@ namespace InventoryTracker
                 inventoryList[itemIndex] = tempInventoryItem;
                 // calclulates the percentage by sending the inventorylist and index of the row
                 InventoryList.PercentageFillerSingle(inventoryList, itemIndex);
+                // sorts the newly edited inventory list to ensure items are in descending alphabetical order
+                InventoryList.SortByItemName(inventoryList);
                 // creates a new instance of the main window
                 Window mainWindow = new MainWindow();
                 // shows the new instance of the main window

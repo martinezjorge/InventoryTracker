@@ -15,6 +15,10 @@
             <StackPanel x:Name="text_panel" Margin="0,0,0,20">
                 <TextBlock Text="Invalid Entry" TextAlignment="Center" FontSize="20" />
             </StackPanel>
+            
+            <StackPanel x:Name="error_message_panel" Margin="0,0,0,20">
+                <TextBlock Text="{Binding}" TextAlignment="Center" FontSize="15" FontStyle="Italic" Foreground="Red" />
+            </StackPanel>
 
             <StackPanel x:Name="button_panel">
                 <Button x:Name="InvalidEntryOkButton" Style="{DynamicResource RoundCorner}" Content="OK" FontSize="20" Width="100" Click="Ok_Button" />
