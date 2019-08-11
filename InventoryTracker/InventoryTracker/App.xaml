@@ -4,9 +4,11 @@
              xmlns:local="clr-namespace:InventoryTracker"
              StartupUri="Main_Window.xaml">
     
+    
     <Application.Resources>
         <!--********************Styling Settings*********************-->
         
+
             <Style x:Key="RoundCorner" TargetType="{x:Type Button}">
                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
                 <Setter Property="VerticalContentAlignment" Value="Center"/>
