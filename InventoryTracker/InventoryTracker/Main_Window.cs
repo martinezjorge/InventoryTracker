@@ -69,5 +69,29 @@ namespace InventoryTracker
             // Closes the main window
             this.Close();
         }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            // gets search box contents
+            string searchBoxContents = SearchBox.Text;
+            // gets the item index of the searched for item
+            int wantedItemIndex = Global.InventoryListSearch(searchBoxContents);
+            // if there isn't a match, open an invalid entry window
+            if (wantedItemIndex == -1)
+            {
+                Window invalidEntry = new InvalidEntry();
+                invalidEntry.Show();
+            }
+            // open the edit item window
+            else
+            {
+                // Creates an instance of the edit item window
+                Window editItemWindow = new EditItem();
+                // Makes the instance visible
+                editItemWindow.Show();
+                // Closes the current instance of the main window
+                this.Close();
+            }
+        }
     }
 }

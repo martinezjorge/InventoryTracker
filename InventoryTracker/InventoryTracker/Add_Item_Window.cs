@@ -39,10 +39,10 @@ namespace InventoryTracker
             {
                 // Uses add method from inventoryList class to add the data in textboxes to inventory list
                 inventoryList.Add(tempInventoryItem);
-                // sorts the inventorylist again
-                InventoryList.SortByItemName(inventoryList);
                 // Calculates the percentage for the new item added to the inventory
                 InventoryList.PercentageFillerSingle(inventoryList, inventoryList.Count - 1);
+                // sorts the inventorylist again
+                InventoryList.SortByItemName(inventoryList);
                 // Creates a new instance of the main window
                 Window mainWindow = new MainWindow();
                 // Shows the new instance of the main window
