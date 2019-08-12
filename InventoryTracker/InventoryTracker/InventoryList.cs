@@ -31,19 +31,39 @@ namespace InventoryTracker
         {
             inList.InnerList.Sort(new myComparer());
         }
+
+        // Method to run the percentage fill single method on all the inventorylist rows
+        public static void PercentageFillerAll(InventoryList inList)
+        {
+            // goes through every row in the inventory list
+            for (int i = 0; i < inList.Count; i++)
+            {
+                // calclulates the perfect
+                PercentageFillerSingle(inList, i);
+            }
+        }
+
+        // calculates the percentage for a given inventory item stock
+        public static void PercentageFillerSingle(InventoryList inList, int i)
+        {
+            // calculates the percentage
+            inList[i].Percentage = 100 * inList[i].CurrentStock / inList[i].IdealStock;
+        }
+        
         // static method to fill inventory list from csv
         public static InventoryList FillInventoryListFromCSV()
         {
             // creates an inventory list object
             InventoryList inList = new InventoryList();
             // creates an directory path object
-            System.IO.DirectoryInfo myDirectory = new DirectoryInfo(Environment.CurrentDirectory);
+            //System.IO.DirectoryInfo myDirectory = new DirectoryInfo(Environment.CurrentDirectory);
             // finds the path to the folder the csv file is in
-            string gparent = myDirectory.Parent.Parent.FullName;
+            //string gparent = myDirectory.Parent.Parent.FullName;
             // concats the name of the file to the path
-            gparent += "\\InventoryDatabase.csv";
+            //gparent += "\\InventoryDatabase.csv";
             // creates a file object to read the csv file
-            var reader = new StreamReader(@gparent);
+            //var reader = new StreamReader(@gparent);
+            var reader = new StreamReader(@"InventoryDatabase.csv");
 
             // while not the end of file
             while (!reader.EndOfStream)
@@ -69,13 +89,14 @@ namespace InventoryTracker
         public static void WriteFullInventoryListToCSV(InventoryList inList)
         {
             // creates a directory path object
-            System.IO.DirectoryInfo myDirectory = new DirectoryInfo(Environment.CurrentDirectory);
+            //System.IO.DirectoryInfo myDirectory = new DirectoryInfo(Environment.CurrentDirectory);
             // stores the path to the folder the csv file is in in a string
-            string gparent = myDirectory.Parent.Parent.FullName;
+            //string gparent = myDirectory.Parent.Parent.FullName;
             // concats the file name to the pathname
-            gparent += "\\InventoryDatabase.csv";
+            //gparent += "\\InventoryDatabase.csv";
             // creates a file writer object to write to the csv file; this method overwrites the file
-            var writer = new StreamWriter(@gparent);
+            //var writer = new StreamWriter(@gparent);
+            var writer = new StreamWriter(@"InventoryDatabase.csv");
 
             // goes through every inventory item in the inventory list
             for (int i = 0; i < inList.Count; i++)
@@ -89,22 +110,6 @@ namespace InventoryTracker
             writer.Close();
         }
 
-        // Method to run the percentage fill single method on all the inventorylist rows
-        public static void PercentageFillerAll(InventoryList inList)
-        {
-            // goes through every row in the inventory list
-            for (int i = 0; i < inList.Count; i++)
-            {
-                // calclulates the perfect
-                PercentageFillerSingle(inList, i);
-            }
-        }
-
-        // calculates the percentage for a given inventory item stock
-        public static void PercentageFillerSingle(InventoryList inList, int i)
-        {
-            // calculates the percentage
-            inList[i].Percentage = 100 * inList[i].CurrentStock / inList[i].IdealStock;
-        }
+        
     }
 }

@@ -16,7 +16,8 @@ namespace InventoryTracker
                 "Current Stock is not a valid", // 1
                 "Ideal Stock is not a valid", // 2
                 "Ideal Stock cannot be 0", // 3
-                "Item will be a duplicate" // 4
+                "Item will be a duplicate", // 4
+                "No Item Name match" // 5
             };
             error_message_panel.DataContext = errorMessages[Global.GetErrorIndex()];
         }
