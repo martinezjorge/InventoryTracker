@@ -58,6 +58,7 @@
     <Compile Include="Add_Item_Window.cs">
       <DependentUpon>Add_Item_Window.xaml</DependentUpon>
     </Compile>
+    <Compile Include="QuantityToForegroundConverter.cs" />
     <Page Include="Edit_Item_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

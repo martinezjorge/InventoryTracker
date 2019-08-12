@@ -7,9 +7,12 @@
         mc:Ignorable="d" Title="Inventory Tracker - Home" Height="450" Width="800"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
-    
-   
-    
+
+    <!--****************ADDS PERCENTAGE COLOR METHOD TO RESOURCES******************** -->
+    <Window.Resources>
+        <local:QuantityToForegroundConverter x:Key="QuantityToForeground" />
+    </Window.Resources>
+
     
 
     <Border BorderBrush="Black" BorderThickness="10,10,10,10">
@@ -37,6 +40,8 @@
                       ScrollViewer.CanContentScroll="True"
                       ScrollViewer.VerticalScrollBarVisibility="Auto" >
 
+                
+
                 <DataGrid.Resources>
 
                     <Style TargetType="{x:Type DataGridColumnHeader}">
@@ -56,8 +61,23 @@
                     <DataGridTextColumn Header="Product" Width="4*" Binding="{Binding ItemName}" />
                     <DataGridTextColumn Header="Actual" Width="2*" Binding="{Binding CurrentStock}" />
                     <DataGridTextColumn Header="Ideal" Width="2*" Binding="{Binding IdealStock}" />
-                    <DataGridTextColumn Header="%" Width="*" Binding="{Binding Percentage}" />
                     
+                    <!-- *************PERCENTAGE GRID WITH MODIFIED COLOR****************** -->
+                    <DataGridTextColumn Header="%" Width="*" Binding="{Binding Percentage}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <Binding Path="Percentage" Converter="{StaticResource QuantityToForeground}" >
+
+                                        </Binding>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+
+                    </DataGridTextColumn>
+
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
