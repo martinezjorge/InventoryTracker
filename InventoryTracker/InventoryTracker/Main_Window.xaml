@@ -38,7 +38,7 @@
             </Grid>
 
             <DataGrid x:Name="InventoryListing" ItemsSource="{Binding}" AutoGenerateColumns="False" IsReadOnly="True" ColumnWidth="*"
-                      MaxHeight="267"
+                      MaxHeight="218"
                       ScrollViewer.CanContentScroll="True"
                       ScrollViewer.VerticalScrollBarVisibility="Auto" >
 
