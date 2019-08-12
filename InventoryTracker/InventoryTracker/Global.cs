@@ -119,5 +119,35 @@ namespace InventoryTracker
             }
 
         }
+
+        //returns the index of the match if match is found, otherwise returns -1
+        //if -1 returned, then ensure invalid entry window is opened.
+        internal static int InventoryListSearch(String itemName)
+        {
+            //gets the inventorylist to be used for checking for item name match
+            InventoryList inventoryList = ((App)Application.Current).GetInventoryList();
+
+            //sets the index to an out of range value
+            index = -1;
+
+            for(int i = 0; i < inventoryList.Count; i++)
+            {
+                if (string.Compare(inventoryList[i].ItemName, itemName, StringComparison.OrdinalIgnoreCase) == 0)
+                {
+                    //sets the index to match the index of the match
+                    index = i;
+                }
+            }
+            
+            //if there is no matches, set the errorIndex so that message in invalid entry window
+            //reflects no matches
+            if (index == -1)
+            {
+                errorIndex = 5;
+            }
+
+            //returns index
+            return index;
+        }
     }
 }
