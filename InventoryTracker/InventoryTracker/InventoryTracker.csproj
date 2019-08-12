@@ -74,6 +74,7 @@
       <DependentUpon>Add_Item_Window.xaml</DependentUpon>
     </Compile>
     <Compile Include="clsDB.cs" />
+    <Compile Include="QuantityToForegroundConverter.cs" />
     <Compile Include="Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
