@@ -42,12 +42,6 @@ namespace InventoryTracker
             {
                 // reset the global item index
                 Global.SetIndex(-1); 
-                // create a new instance of the main window
-                Window mainWindow = new MainWindow();
-                // show the instance of the main window
-                mainWindow.Show();
-                // close the full iterative update window
-                this.Close();
                 
                 using (SQLiteConnection conn = new SQLiteConnection(App.databasePath))
                 {
@@ -60,23 +54,23 @@ namespace InventoryTracker
                     {
                         m.Actual = Convert.ToInt32(UpdateIdealTextBox.Text);
                         conn.Update(m);
-                        Console.WriteLine("This ran");
+                        //Console.WriteLine("This ran");
                     }
                 }
+
+                // create a new instance of the main window
+                Window mainWindow = new MainWindow();
+                // show the instance of the main window
+                mainWindow.Show();
+                // close the full iterative update window
+                this.Close();
             }
             // if we're not at the end yet
             else
             {
                 // set the global item index to the incremented index
                 Global.SetIndex(itemIndex);
-                // create a new instance of the iterative update window
-                Window iterativeUpdateWindow = new Iterative_Update_Window();
-                // show the instance of the iterative update window
-                iterativeUpdateWindow.Show();
-                // close the previous instance of the iterative update window
-                this.Close();
-
-
+                
                 using (SQLiteConnection conn = new SQLiteConnection(App.databasePath))
                 {
                     conn.CreateTable<Inventory>();
@@ -88,10 +82,15 @@ namespace InventoryTracker
                     {
                         m.Actual = Convert.ToInt32(UpdateIdealTextBox.Text);
                         conn.Update(m);
-                        Console.WriteLine("This ran");
                     }
                 }
 
+                // create a new instance of the iterative update window
+                Window iterativeUpdateWindow = new Iterative_Update_Window();
+                // show the instance of the iterative update window
+                iterativeUpdateWindow.Show();
+                // close the previous instance of the iterative update window
+                this.Close();
             }
         }
         private void Update_Home(object sender, RoutedEventArgs e)
@@ -102,13 +101,7 @@ namespace InventoryTracker
             InventoryList.PercentageFillerSingle(inventoryList, itemIndex);
             // reset the global item index
             Global.SetIndex(-1); 
-            // create a new instance of the main window
-            Window mainWindow = new MainWindow();
-            // Show the new instance of the main window
-            mainWindow.Show();
-            // Close the instance of the iterative update window
-            this.Close();
-
+            
             using (SQLiteConnection conn = new SQLiteConnection(App.databasePath))
             {
                 conn.CreateTable<Inventory>();
@@ -120,9 +113,15 @@ namespace InventoryTracker
                 {
                     m.Actual = Convert.ToInt32(UpdateIdealTextBox.Text);
                     conn.Update(m);
-                    Console.WriteLine("This ran");
                 }
             }
+
+            // create a new instance of the main window
+            Window mainWindow = new MainWindow();
+            // Show the new instance of the main window
+            mainWindow.Show();
+            // Close the instance of the iterative update window
+            this.Close();
         }
         private void Cancel_Button(object sender, RoutedEventArgs e)
         {

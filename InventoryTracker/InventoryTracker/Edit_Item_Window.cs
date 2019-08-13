@@ -38,13 +38,7 @@ namespace InventoryTracker
         {
             // removes the selected row from the inventory window given the global 
             inventoryList.RemoveAt(itemIndex);
-            // Creates a new instance of the main window
-            Window mainWindow = new MainWindow();
-            // Shows the new instance of the main window
-            mainWindow.Show();
-            // Closes the edit item window
-            this.Close();
-
+            
             using (SQLiteConnection conn = new SQLiteConnection(App.databasePath))
             {
                 conn.CreateTable<Inventory>();
@@ -55,6 +49,13 @@ namespace InventoryTracker
                 if (m != null)
                     conn.Delete(m);
             }
+
+            // Creates a new instance of the main window
+            Window mainWindow = new MainWindow();
+            // Shows the new instance of the main window
+            mainWindow.Show();
+            // Closes the edit item window
+            this.Close();
         }
 
         // logic for pushing any changes through to the inventory list
@@ -74,15 +75,7 @@ namespace InventoryTracker
                 inventoryList[itemIndex] = tempInventoryItem;
                 // calclulates the percentage by sending the inventorylist and index of the row
                 InventoryList.PercentageFillerSingle(inventoryList, itemIndex);
-                // sorts the newly edited inventory list to ensure items are in descending alphabetical order
-                InventoryList.SortByItemName(inventoryList);
-                // creates a new instance of the main window
-                Window mainWindow = new MainWindow();
-                // shows the new instance of the main window
-                mainWindow.Show();
-                // closes the instance of the edit item window
-                this.Close();
-
+                
                 using (SQLiteConnection conn = new SQLiteConnection(App.databasePath))
                 {
                     conn.CreateTable<Inventory>();
@@ -99,6 +92,14 @@ namespace InventoryTracker
                     }
                 }
 
+                // sorts the newly edited inventory list to ensure items are in descending alphabetical order
+                InventoryList.SortByItemName(inventoryList);
+                // creates a new instance of the main window
+                Window mainWindow = new MainWindow();
+                // shows the new instance of the main window
+                mainWindow.Show();
+                // closes the instance of the edit item window
+                this.Close();
             }
             else
             {

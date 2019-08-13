@@ -44,15 +44,7 @@ namespace InventoryTracker
                 inventoryList.Add(tempInventoryItem);
                 // Calculates the percentage for the new item added to the inventory
                 InventoryList.PercentageFillerSingle(inventoryList, inventoryList.Count - 1);
-                // sorts the inventorylist again
-                InventoryList.SortByItemName(inventoryList);
-                // Creates a new instance of the main window
-                Window mainWindow = new MainWindow();
-                // Shows the new instance of the main window
-                mainWindow.Show();
-                // Closes the instance of the add item window
-                this.Close();
-
+                
                 using (SQLiteConnection conn = new SQLiteConnection(App.databasePath))
                 {
                     Inventory inventory = new Inventory()
@@ -65,6 +57,15 @@ namespace InventoryTracker
                     conn.CreateTable<Inventory>();
                     conn.Insert(inventory);
                 }
+
+                // sorts the inventorylist again
+                InventoryList.SortByItemName(inventoryList);
+                // Creates a new instance of the main window
+                Window mainWindow = new MainWindow();
+                // Shows the new instance of the main window
+                mainWindow.Show();
+                // Closes the instance of the add item window
+                this.Close();
             }
             else
             {

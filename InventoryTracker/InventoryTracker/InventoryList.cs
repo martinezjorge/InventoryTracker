@@ -78,51 +78,6 @@ namespace InventoryTracker
             // calculates the percentage
             inList[i].Percentage = 100 * inList[i].CurrentStock / inList[i].IdealStock;
         }
-        
-        // static method to fill inventory list from csv
-        public static InventoryList FillInventoryListFromCSV()
-        {
-            // creates an inventory list object
-            InventoryList inList = new InventoryList();
-            var reader = new StreamReader(@"InventoryDatabase.csv");
 
-            // while not the end of file
-            while (!reader.EndOfStream)
-            {
-                // read the line
-                string line = reader.ReadLine();
-                // split by comma
-                string[] data = line.Split(',');
-                // add the row to the inventory list object
-                inList.Add(new InventoryItem(data[0], Int32.Parse(data[1]), Int32.Parse(data[2])));
-            }
-            // close the file object
-            reader.Close();
-            // calculate the stock percentages for all the items in the inventory list
-            PercentageFillerAll(inList);
-
-            SortByItemName(inList);
-            // return the inventory list
-            return inList;
-        }
-
-        // method to write everything in the inventory list object to a csv
-        public static void WriteFullInventoryListToCSV(InventoryList inList)
-        {
-            var writer = new StreamWriter(@"InventoryDatabase.csv");
-
-            // goes through every inventory item in the inventory list
-            for (int i = 0; i < inList.Count; i++)
-            {
-                // writes a row to the csv file
-                writer.WriteLine(string.Format("{0},{1},{2}", inList[i].ItemName, inList[i].CurrentStock, inList[i].IdealStock));
-                // clears the buffer
-                writer.Flush();
-            }
-            // closes the file writer object
-            writer.Close();
-        }
-
-        
     }
 }

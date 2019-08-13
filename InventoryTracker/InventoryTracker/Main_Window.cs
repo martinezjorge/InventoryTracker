@@ -34,11 +34,7 @@ namespace InventoryTracker
         // logic for the edit button
         private void Edit_Button(object sender, RoutedEventArgs e)
         {
-            // int index = InventoryListing.SelectedIndex
-            // this gets the row # (starts at 0 for top of list)
             // Sets a global variable to the index of the selected row
-            //Global.SetIndex(InventoryListing.SelectedIndex);
-            //Global.SetReferencedInventoryItem((InventoryItem)InventoryListing.SelectedItem);
             Global.SetIndex(inventoryList[(InventoryItem)InventoryListing.SelectedItem]);
             // Creates an instance of the edit item window
             Window editItemWindow = new EditItem();
