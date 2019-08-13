@@ -7,6 +7,9 @@
 // Leslie Ledeboer
 
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Input;
 
 namespace InventoryTracker
 {
@@ -94,9 +97,20 @@ namespace InventoryTracker
             }
         }
 
-        private void SearchBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        private void TextBox_KeyEnterUpdate(object sender, KeyEventArgs e)
         {
+            if (e.Key == Key.Enter || e.Key == Key.Return)
+            {
+                TextBox tBox = (TextBox)sender;
 
+                DependencyProperty prop = TextBox.TextProperty;
+
+                BindingExpression binding = BindingOperations.GetBindingExpression(tBox, prop);
+
+                if (binding != null)
+                    SearchButton_Click(sender, e);
+            }
         }
+
     }
 }

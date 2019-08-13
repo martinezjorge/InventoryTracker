@@ -24,7 +24,7 @@
             </StackPanel>
 
             <WrapPanel x:Name="search_panel" Margin="0,0,0,20" HorizontalAlignment="Center">
-                <TextBox Name="SearchBox"  Width="400"  Margin="0,0,50,0" TextWrapping="Wrap" FontSize="20" TextChanged="SearchBox_TextChanged" />
+                <TextBox Name="SearchBox" Text="{Binding TextValue}" KeyUp="TextBox_KeyEnterUpdate" Width="400"  Margin="0,0,50,0" TextWrapping="Wrap" FontSize="20" />
                 <Button Name="SearchButton"  Width="100"  Content="Search" Style="{DynamicResource RoundCorner}" FontSize="20" Click="SearchButton_Click" />
             </WrapPanel>
 
