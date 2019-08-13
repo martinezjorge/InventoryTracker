@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 using System.Text.RegularExpressions;
+using SQLite;
+using System;
 
 namespace InventoryTracker
 {
@@ -46,6 +48,21 @@ namespace InventoryTracker
                 mainWindow.Show();
                 // close the full iterative update window
                 this.Close();
+                
+                using (SQLiteConnection conn = new SQLiteConnection(App.databasePath))
+                {
+                    conn.CreateTable<Inventory>();
+
+                    Inventory m = (from p in conn.Table<Inventory>()
+                                   where p.Product == ProductNameTextBlock.Text
+                                   select p).FirstOrDefault();
+                    if (m != null)
+                    {
+                        m.Actual = Convert.ToInt32(UpdateIdealTextBox.Text);
+                        conn.Update(m);
+                        Console.WriteLine("This ran");
+                    }
+                }
             }
             // if we're not at the end yet
             else
@@ -58,6 +75,23 @@ namespace InventoryTracker
                 iterativeUpdateWindow.Show();
                 // close the previous instance of the iterative update window
                 this.Close();
+
+
+                using (SQLiteConnection conn = new SQLiteConnection(App.databasePath))
+                {
+                    conn.CreateTable<Inventory>();
+
+                    Inventory m = (from p in conn.Table<Inventory>()
+                                   where p.Product == ProductNameTextBlock.Text
+                                   select p).FirstOrDefault();
+                    if (m != null)
+                    {
+                        m.Actual = Convert.ToInt32(UpdateIdealTextBox.Text);
+                        conn.Update(m);
+                        Console.WriteLine("This ran");
+                    }
+                }
+
             }
         }
         private void Update_Home(object sender, RoutedEventArgs e)
@@ -74,6 +108,21 @@ namespace InventoryTracker
             mainWindow.Show();
             // Close the instance of the iterative update window
             this.Close();
+
+            using (SQLiteConnection conn = new SQLiteConnection(App.databasePath))
+            {
+                conn.CreateTable<Inventory>();
+
+                Inventory m = (from p in conn.Table<Inventory>()
+                               where p.Product == ProductNameTextBlock.Text
+                               select p).FirstOrDefault();
+                if (m != null)
+                {
+                    m.Actual = Convert.ToInt32(UpdateIdealTextBox.Text);
+                    conn.Update(m);
+                    Console.WriteLine("This ran");
+                }
+            }
         }
         private void Cancel_Button(object sender, RoutedEventArgs e)
         {

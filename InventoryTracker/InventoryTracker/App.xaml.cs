@@ -16,21 +16,16 @@ namespace InventoryTracker
         // creates an instance of inventory list on startup
         static InventoryList inventoryList = null;
 
+        public static string databasePath = "Inventory.db";
+
         // behaviour when the program is started
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
             // populate the instance of the inventory item list on start up
-            inventoryList = InventoryList.FillInventoryListFromCSV();
+            inventoryList = InventoryList.FillInventoryListFromSQL();
         }
 
-        // behaviour when the program is closed
-        protected override void OnExit(ExitEventArgs e)
-        {
-            base.OnExit(e);
-            // Writes the data in the dynamic inventory list to the csv whenever the program is closed
-            InventoryList.WriteFullInventoryListToCSV(inventoryList);
-        }
 
         // returns the inventory list whenever called
         internal InventoryList GetInventoryList()

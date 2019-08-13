@@ -7,7 +7,6 @@
 // Leslie Ledeboer
 
 using System.Windows;
-using System.Windows.Controls;
 
 namespace InventoryTracker
 {
@@ -72,10 +71,11 @@ namespace InventoryTracker
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-            // gets search box contents
+            // gets search box contents                     
             string searchBoxContents = SearchBox.Text;
             // gets the item index of the searched for item
             int wantedItemIndex = Global.InventoryListSearch(searchBoxContents);
+
             // if there isn't a match, open an invalid entry window
             if (wantedItemIndex == -1)
             {
@@ -92,6 +92,11 @@ namespace InventoryTracker
                 // Closes the current instance of the main window
                 this.Close();
             }
+        }
+
+        private void SearchBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+
         }
     }
 }

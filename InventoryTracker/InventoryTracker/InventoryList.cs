@@ -1,10 +1,39 @@
 ﻿using System;
 using System.IO;
+using SQLite;
 
 namespace InventoryTracker
 {
     class InventoryList : System.Collections.CollectionBase
     {
+
+        public static InventoryList FillInventoryListFromSQL()
+        {
+
+            // creates an inventory list object
+            InventoryList inList = new InventoryList();
+
+            // sql reader object to get all the rows from the query
+            using (SQLiteConnection conn = new SQLiteConnection(App.databasePath))
+            {
+                conn.CreateTable<Inventory>();
+
+                foreach( Inventory item in conn.Table<Inventory>().ToList())
+                {
+                    inList.Add(new InventoryItem(item.Product, item.Actual, item.Ideal));
+                }
+            }
+
+            // calculate the stock percentages for all the items in the inventory list
+            PercentageFillerAll(inList);
+            
+            // Sorts by the item name!
+            SortByItemName(inList);
+
+            return inList;
+
+        }
+
         // method to add an item to the end of the inventory list
         public int Add(InventoryItem value)
         {
@@ -55,14 +84,6 @@ namespace InventoryTracker
         {
             // creates an inventory list object
             InventoryList inList = new InventoryList();
-            // creates an directory path object
-            //System.IO.DirectoryInfo myDirectory = new DirectoryInfo(Environment.CurrentDirectory);
-            // finds the path to the folder the csv file is in
-            //string gparent = myDirectory.Parent.Parent.FullName;
-            // concats the name of the file to the path
-            //gparent += "\\InventoryDatabase.csv";
-            // creates a file object to read the csv file
-            //var reader = new StreamReader(@gparent);
             var reader = new StreamReader(@"InventoryDatabase.csv");
 
             // while not the end of file
@@ -88,14 +109,6 @@ namespace InventoryTracker
         // method to write everything in the inventory list object to a csv
         public static void WriteFullInventoryListToCSV(InventoryList inList)
         {
-            // creates a directory path object
-            //System.IO.DirectoryInfo myDirectory = new DirectoryInfo(Environment.CurrentDirectory);
-            // stores the path to the folder the csv file is in in a string
-            //string gparent = myDirectory.Parent.Parent.FullName;
-            // concats the file name to the pathname
-            //gparent += "\\InventoryDatabase.csv";
-            // creates a file writer object to write to the csv file; this method overwrites the file
-            //var writer = new StreamWriter(@gparent);
             var writer = new StreamWriter(@"InventoryDatabase.csv");
 
             // goes through every inventory item in the inventory list

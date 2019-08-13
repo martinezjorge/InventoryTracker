@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 using System.Text.RegularExpressions;
+using SQLite;
+using System;
 
 namespace InventoryTracker
 {
@@ -35,6 +37,7 @@ namespace InventoryTracker
                      true => add item
                      false => invalidEntry window
             */
+
             if (Global.IsValid(AddItemNameBox.Text, AddItemCurrentStockBox.Text, AddItemIdealStockBox.Text))
             {
                 // Uses add method from inventoryList class to add the data in textboxes to inventory list
@@ -49,6 +52,19 @@ namespace InventoryTracker
                 mainWindow.Show();
                 // Closes the instance of the add item window
                 this.Close();
+
+                using (SQLiteConnection conn = new SQLiteConnection(App.databasePath))
+                {
+                    Inventory inventory = new Inventory()
+                    {
+                        Product = AddItemNameBox.Text,
+                        Actual = Convert.ToInt32(AddItemCurrentStockBox.Text),
+                        Ideal = Convert.ToInt32(AddItemIdealStockBox.Text)
+                    };
+
+                    conn.CreateTable<Inventory>();
+                    conn.Insert(inventory);
+                }
             }
             else
             {

@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 using System.Text.RegularExpressions;
+using SQLite;
+using System;
 
 namespace InventoryTracker
 {
@@ -30,6 +32,8 @@ namespace InventoryTracker
             // populates the edit item window with the data from the selected row
             window_panel.DataContext = tempInventoryItem;
         }
+
+
         private void Delete_button(object sender, RoutedEventArgs e)
         {
             // removes the selected row from the inventory window given the global 
@@ -40,6 +44,17 @@ namespace InventoryTracker
             mainWindow.Show();
             // Closes the edit item window
             this.Close();
+
+            using (SQLiteConnection conn = new SQLiteConnection(App.databasePath))
+            {
+                conn.CreateTable<Inventory>();
+
+                Inventory m = (from p in conn.Table<Inventory>()
+                             where p.Product == EditItemNameBox.Text
+                             select p).FirstOrDefault();
+                if (m != null)
+                    conn.Delete(m);
+            }
         }
 
         // logic for pushing any changes through to the inventory list
@@ -67,6 +82,23 @@ namespace InventoryTracker
                 mainWindow.Show();
                 // closes the instance of the edit item window
                 this.Close();
+
+                using (SQLiteConnection conn = new SQLiteConnection(App.databasePath))
+                {
+                    conn.CreateTable<Inventory>();
+
+                    Inventory m = (from p in conn.Table<Inventory>()
+                                   where p.Product == EditItemNameBox.Text
+                                   select p).FirstOrDefault();
+                    if (m != null)
+                    {
+                        m.Product = EditItemNameBox.Text;
+                        m.Actual = Convert.ToInt32(EditItemCurrentStockBox.Text);
+                        m.Ideal = Convert.ToInt32(EditItemIdealStockBox.Text);
+                        conn.Update(m);
+                    }
+                }
+
             }
             else
             {
@@ -75,7 +107,6 @@ namespace InventoryTracker
                 // show it, however the edit item window is not closed
                 invalidEntry.Show();
             }
-            
         }
         
         // if the user decides not to make any changes
