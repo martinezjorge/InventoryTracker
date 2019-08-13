@@ -1,4 +1,10 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows;
 
 namespace InventoryTracker
 {
@@ -10,6 +16,8 @@ namespace InventoryTracker
         // creates an instance of inventory list on startup
         static InventoryList inventoryList = null;
 
+        public static string databasePath = "Inventory.db";
+
         // behaviour when the program is started
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -18,15 +26,8 @@ namespace InventoryTracker
             inventoryList = InventoryList.FillInventoryListFromSQL();
         }
 
-        // behaviour when the program is closed
-        protected override void OnExit(ExitEventArgs e)
-        {
-            base.OnExit(e);
-            // Writes the data in the dynamic inventory list to the csv whenever the program is closed
-            InventoryList.WriteFullInventoryListToCSV(inventoryList);
-        }
 
-        // a custom class specific to this project, returns the inventory list whenever called
+        // returns the inventory list whenever called
         internal InventoryList GetInventoryList()
         {
             return inventoryList;

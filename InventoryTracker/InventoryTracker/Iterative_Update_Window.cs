@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 using System.Text.RegularExpressions;
+using SQLite;
+using System;
 
 namespace InventoryTracker
 {
@@ -39,13 +41,28 @@ namespace InventoryTracker
             if (itemIndex > inventoryList.Count - 1) // greater than total number of items in list, then at end of list
             {
                 // reset the global item index
-                Global.SetIndex(-1); 
+                Global.SetIndex(-1);
                 // create a new instance of the main window
                 Window mainWindow = new MainWindow();
                 // show the instance of the main window
                 mainWindow.Show();
                 // close the full iterative update window
                 this.Close();
+
+                using (SQLiteConnection conn = new SQLiteConnection(App.databasePath))
+                {
+                    conn.CreateTable<Inventory>();
+
+                    Inventory m = (from p in conn.Table<Inventory>()
+                                   where p.Product == ProductNameTextBlock.Text
+                                   select p).FirstOrDefault();
+                    if (m != null)
+                    {
+                        m.Actual = Convert.ToInt32(UpdateIdealTextBox.Text);
+                        conn.Update(m);
+                        Console.WriteLine("This ran");
+                    }
+                }
             }
             // if we're not at the end yet
             else
@@ -58,6 +75,23 @@ namespace InventoryTracker
                 iterativeUpdateWindow.Show();
                 // close the previous instance of the iterative update window
                 this.Close();
+
+
+                using (SQLiteConnection conn = new SQLiteConnection(App.databasePath))
+                {
+                    conn.CreateTable<Inventory>();
+
+                    Inventory m = (from p in conn.Table<Inventory>()
+                                   where p.Product == ProductNameTextBlock.Text
+                                   select p).FirstOrDefault();
+                    if (m != null)
+                    {
+                        m.Actual = Convert.ToInt32(UpdateIdealTextBox.Text);
+                        conn.Update(m);
+                        Console.WriteLine("This ran");
+                    }
+                }
+
             }
         }
         private void Update_Home(object sender, RoutedEventArgs e)
@@ -67,15 +101,29 @@ namespace InventoryTracker
             // Calculate the new percentage based on the new stock
             InventoryList.PercentageFillerSingle(inventoryList, itemIndex);
             // reset the global item index
-            Global.SetIndex(-1); 
+            Global.SetIndex(-1);
             // create a new instance of the main window
             Window mainWindow = new MainWindow();
             // Show the new instance of the main window
             mainWindow.Show();
             // Close the instance of the iterative update window
             this.Close();
-        }
 
+            using (SQLiteConnection conn = new SQLiteConnection(App.databasePath))
+            {
+                conn.CreateTable<Inventory>();
+
+                Inventory m = (from p in conn.Table<Inventory>()
+                               where p.Product == ProductNameTextBlock.Text
+                               select p).FirstOrDefault();
+                if (m != null)
+                {
+                    m.Actual = Convert.ToInt32(UpdateIdealTextBox.Text);
+                    conn.Update(m);
+                    Console.WriteLine("This ran");
+                }
+            }
+        }
         private void Cancel_Button(object sender, RoutedEventArgs e)
         {
             // Reset the global item index
