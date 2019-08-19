@@ -43,7 +43,9 @@
             <DataGrid x:Name="InventoryListing" ItemsSource="{Binding}" AutoGenerateColumns="False" IsReadOnly="True" ColumnWidth="*"
                       MaxHeight="218"
                       ScrollViewer.CanContentScroll="True"
-                      ScrollViewer.VerticalScrollBarVisibility="Auto" >
+                      ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                      RowBackground="LightGray"
+                      AlternatingRowBackground="LightSteelBlue">
 
                 
 
@@ -56,28 +58,51 @@
 
                     <Style TargetType="{x:Type DataGridCell}">
                         <Setter Property="FontSize" Value="20"/>
-                        <Setter Property="FontWeight" Value="Light"/>
+                        <Setter Property="FontWeight" Value="DemiBold"/>
+                        
                     </Style>
+
+                    
                     
                 </DataGrid.Resources>
 
                 <DataGrid.Columns>
-                    
-                    <DataGridTextColumn Header="Product" Width="4*" Binding="{Binding ItemName}" />
-                    <DataGridTextColumn Header="Actual" Width="2*" Binding="{Binding CurrentStock}" />
-                    <DataGridTextColumn Header="Ideal" Width="2*" Binding="{Binding IdealStock}" />
+
+                    <DataGridTextColumn Header="Product" Width="4*" Binding="{Binding ItemName}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+
+                    <DataGridTextColumn Header="Actual" Width="2*" Binding="{Binding CurrentStock}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Ideal" Width="2*" Binding="{Binding IdealStock}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
                     
                     <!-- *************PERCENTAGE GRID WITH MODIFIED COLOR****************** -->
                     <DataGridTextColumn Header="%" Width="*" Binding="{Binding Percentage}">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
-                                <Setter Property="Background">
+                                <Setter Property="Foreground">
                                     <Setter.Value>
                                         <Binding Path="Percentage" Converter="{StaticResource QuantityToForeground}" >
 
                                         </Binding>
                                     </Setter.Value>
                                 </Setter>
+                                <Setter Property="HorizontalAlignment" Value="Center" />
                             </Style>
                         </DataGridTextColumn.ElementStyle>
 
