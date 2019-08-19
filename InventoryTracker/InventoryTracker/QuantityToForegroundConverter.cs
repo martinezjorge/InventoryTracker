@@ -27,7 +27,7 @@ namespace InventoryTracker
                 return Brushes.Yellow;
             }
             else
-                return Brushes.LightGreen;
+                return Brushes.SeaGreen;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
